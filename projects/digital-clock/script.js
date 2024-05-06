@@ -25,3 +25,7 @@
         // Call updateTimeAndDate initially to display the current time and date
         updateTimeAndDate();
     
+        // print function
+        function print_current_page() {
+            window.print();
+        }
