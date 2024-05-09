@@ -1,6 +1,6 @@
 const button = document.getElementById('button');
 const audioElement = document.getElementById('audio');
-const textElement = document.getElementById('textJoke');
+// const textElement = document.getElementById('textJoke');
 
 // VoiceRSS Javascript SDK
 const VoiceRSS = {
@@ -137,7 +137,7 @@ async function getJokes(){
             joke = `${data.setup} ... ${data.delivery}`;
         } else {
             joke = data.joke;
-            textElement.textContent = joke;
+            // textElement.textContent = joke;
         }
         // Text-to-Speech
        
