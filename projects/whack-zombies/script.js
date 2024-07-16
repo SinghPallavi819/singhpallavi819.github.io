@@ -1,6 +1,6 @@
 
-let currMoleTile;
 let currPlantTile;
+let currZomTile;
 let score = 0;
 let gameOver = false;
 
@@ -16,57 +16,57 @@ function setGame() {
         document.getElementById("board").appendChild(tile);
     }
 
-    setInterval(setMole, 1000);
-    setInterval(setPlant, 2000);
+    setInterval(setPlant, 1000);
+    setInterval(setZombie, 2000);
 }
 function getRandomTile (){
     let num = Math.floor(Math.random() * 9);
     return num.toString();
 }
-function setMole() {
+function setPlant() {
 if (gameOver){
     return;
 }
-    if (currMoleTile){
-        currMoleTile.innerHTML = "";
-    }
-    let mole = document.createElement("img");
-    mole.src = "./images/monty-mole.png";
-
-    let num = getRandomTile();
-    if (currPlantTile && currPlantTile.id == num){
-    return;
-}
-    currMoleTile = document.getElementById(num);
-    currMoleTile.appendChild(mole);
-}
-
-function setPlant(){
-    if (gameOver){
-        return;
-    }
-    if(currPlantTile){
+    if (currPlantTile){
         currPlantTile.innerHTML = "";
     }
     let plant = document.createElement("img");
-    plant.src = "./images/piranha-plant.png";
+    plant.src = "./images/flower.webp";
 
     let num = getRandomTile();
-    if (currMoleTile && currMoleTile.id == num){
-        return;
-    }
+    if (currZomTile && currZomTile.id == num){
+    return;
+}
     currPlantTile = document.getElementById(num);
     currPlantTile.appendChild(plant);
+}
+
+function setZombie(){
+    if (gameOver){
+        return;
+    }
+    if(currZomTile){
+        currZomTile.innerHTML = "";
+    }
+    let zombie = document.createElement("img");
+    zombie.src = "./images/zombie.png";
+
+    let num = getRandomTile();
+    if (currPlantTile && currPlantTile.id == num){
+        return;
+    }
+    currZomTile = document.getElementById(num);
+    currZomTile.appendChild(zombie);
 }
 
 function selectTile() {
     if (gameOver){
         return;
     }
-    if(this == currMoleTile){
+    if(this == currPlantTile){
         score += 10;
         document.getElementById("score").innerText = score.toString();
-    }else if (this == currPlantTile){
+    }else if (this == currZomTile){
         document.getElementById("score").innerText = "GAME OVER " + score.toString();
         gameOver = true;
     }

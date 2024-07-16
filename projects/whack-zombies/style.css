@@ -1,0 +1,33 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: url(./images/wallpaper.jpg);
+    background-size: cover;
+    text-align:center;
+    color: white;
+}
+
+#board {
+    width: 540px;
+    height: 540px;
+    display: flex;
+    flex-wrap: wrap;
+    background: url(./images/soil.png);
+    background-size: cover;
+    margin: 0 auto;
+    border: 3px solid whitesmoke;
+    border-radius: 30px;
+}
+
+#board div {
+    width: 180px;
+    height: 180px;
+    background-image: url(./images/hole.png);
+    background-size: cover;
+    
+    
+}
+
+#board div img {
+    width : 140px;
+    height: 140px;
+}
