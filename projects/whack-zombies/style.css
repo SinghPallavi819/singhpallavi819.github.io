@@ -1,6 +1,7 @@
+/* style.css */
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: url(./images/wallpaper.jpg);
+    background: url(./images/wallpaper.jpg) no-repeat center center fixed;
     background-size: cover;
     text-align: center;
     color: white;
@@ -9,30 +10,37 @@ body {
 }
 
 #board {
-    width: 540px; /* Fixed width for desktop */
-    height: 540px; /* Fixed height for desktop */
+    width: 90vw; /* Responsive width */
+    height: 90vw; /* Responsive height */
+    max-width: 540px; /* Maximum width for large screens */
+    max-height: 540px; /* Maximum height for large screens */
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     background: url(./images/soil.png);
     background-size: cover;
-    margin: 0 auto;
+    margin: 20px auto;
     border: 3px solid whitesmoke;
     border-radius: 30px;
 }
 
 #start {
-    width: 100px;
-    height: 30px;
+    width: 20vw;
+    height: 5vh;
+    max-width: 100px; /* Maximum width */
+    max-height: 30px; /* Maximum height */
     background-color: aliceblue;
     border: 3px solid white;
     border-radius: 30px;
     margin-bottom: 20px;
+    font-size: 1em;
 }
 
 #board div {
-    width: 180px;
-    height: 180px;
+    width: 30vw; /* Responsive width */
+    height: 30vw; /* Responsive height */
+    max-width: 180px; /* Maximum width for large screens */
+    max-height: 180px; /* Maximum height for large screens */
     background-image: url(./images/hole.png);
     background-size: cover;
     display: flex;
@@ -42,8 +50,8 @@ body {
 }
 
 #board div img {
-    width: 140px;
-    height: 140px;
+    width: 70%; /* Responsive width */
+    height: auto; /* Maintain aspect ratio */
     user-select: none;
     -moz-user-select: none;
     -webkit-user-drag: none;
@@ -51,48 +59,15 @@ body {
     -ms-user-select: none;
 }
 
-/* Media Queries for Responsive Design */
-
-@media screen and (max-width: 768px) {
-    #board {
-        width: 80%; /* Responsive width */
-        height: auto; /* Adjust height as needed */
-        max-width: 400px; /* Maximum width for smaller screens */
-        max-height: 400px; /* Maximum height for smaller screens */
+/* Media Query for Smaller Screens */
+@media (max-width: 600px) {
+    #start {
+        width: 50vw;
+        height: 7vh;
     }
 
     #board div {
-        width: calc(33.33% - 20px); /* Adjust for margins */
-        height: calc(33.33% - 20px); /* Adjust for margins */
-        max-width: 120px;
-        max-height: 120px;
-        margin: 10px; /* Space between tiles */
-    }
-
-    #start {
-        width: 50%; /* Adjust button width for smaller screens */
-        max-width: 150px;
-    }
-}
-
-@media screen and (max-width: 480px) {
-    #board {
-        width: 90%; /* Responsive width */
-        height: auto; /* Adjust height as needed */
-        max-width: 300px; /* Maximum width for smallest screens */
-        max-height: 300px; /* Maximum height for smallest screens */
-    }
-
-    #board div {
-        width: calc(50% - 20px); /* Adjust for margins */
-        height: calc(50% - 20px); /* Adjust for margins */
-        max-width: 100px;
-        max-height: 100px;
-        margin: 10px; /* Space between tiles */
-    }
-
-    #start {
-        width: 80%; /* Adjust button width for smallest screens */
-        max-width: 120px;
+        width: 40vw;
+        height: 40vw;
     }
 }
