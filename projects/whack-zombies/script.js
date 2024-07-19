@@ -13,16 +13,18 @@ window.onload = function() {
 }
 
 function initializeBoard() {
+    let board = document.getElementById("board");
     for (let i = 0; i < 9; i++) {
         let tile = document.createElement("div");
         tile.id = i.toString();
         tile.addEventListener("click", selectTile);
-        document.getElementById("board").appendChild(tile);
+        board.appendChild(tile);
     }
 }
 
 function startGame() {
     document.getElementById('start').style.display = 'none';
+    document.getElementById('reset').style.display = 'none'; // Hide reset button at start
     resetGame();
     plantInterval = setInterval(setPlant, 1000);
     zombieInterval = setInterval(setZombie, 2000);
@@ -36,11 +38,17 @@ function resetGame() {
     currZomTile = null;
     clearTiles();
     gameOverSound.pause(); // Pause game over sound if it's still playing
+    document.getElementById('reset').style.display = 'none'; // Hide reset button after reset
 }
 
 function clearTiles() {
+    let board = document.getElementById("board");
+    board.innerHTML = '';
     for (let i = 0; i < 9; i++) {
-        document.getElementById(i.toString()).innerHTML = "";
+        let tile = document.createElement("div");
+        tile.id = i.toString();
+        tile.addEventListener("click", selectTile);
+        board.appendChild(tile);
     }
 }
 
@@ -58,12 +66,7 @@ function setPlant() {
     }
     let plant = document.createElement("img");
     plant.src = "./images/flower.webp";
-
-    let num = getRandomTile();
-    if (currZomTile && currZomTile.id == num) {
-        return;
-    }
-    currPlantTile = document.getElementById(num);
+    currPlantTile = document.getElementById(getRandomTile());
     currPlantTile.appendChild(plant);
 }
 
@@ -76,14 +79,8 @@ function setZombie() {
     }
     let zombie = document.createElement("img");
     zombie.src = "./images/zombie.png";
-
-    let num = getRandomTile();
-    if (currPlantTile && currPlantTile.id == num) {
-        return;
-    }
-    currZomTile = document.getElementById(num);
+    currZomTile = document.getElementById(getRandomTile());
     currZomTile.appendChild(zombie);
-
     // Play zombie sound
     playZombieSound();
 }
@@ -92,21 +89,20 @@ function selectTile() {
     if (gameOver) {
         return;
     }
-    if (this == currPlantTile) {
+    if (this === currPlantTile) {
         score += 10;
         document.getElementById("score").innerText = score.toString();
         // Play plant sound
         playPlantSound();
-        // Additional actions for clicking plant
-    } else if (this == currZomTile) {
-        document.getElementById("score").innerText = "GAME OVER " + score.toString();
+    } else if (this === currZomTile) {
         gameOver = true;
         clearInterval(plantInterval);
         clearInterval(zombieInterval);
+        document.getElementById("score").innerText = "GAME OVER " + score.toString();
+        // Play game over sound
         playGameOverSound();
         document.getElementById('start').innerText = 'Start Over';
-        document.getElementById('start').style.display = 'inline-block';
-        // Additional actions for clicking zombie
+        document.getElementById('reset').style.display = 'inline-block'; // Show reset button
     }
 }
 
