@@ -38,7 +38,6 @@ function resetGame() {
     currZomTile = null;
     clearTiles();
     gameOverSound.pause(); // Pause game over sound if it's still playing
-    document.getElementById('reset').style.display = 'none'; // Hide reset button after reset
 }
 
 function clearTiles() {
