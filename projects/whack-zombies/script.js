@@ -83,6 +83,9 @@ function setZombie() {
     }
     currZomTile = document.getElementById(num);
     currZomTile.appendChild(zombie);
+
+    // Play zombie sound
+    playZombieSound();
 }
 
 function selectTile() {
