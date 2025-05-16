@@ -3,7 +3,7 @@ name: 'Pallavi Portfolio'
 description: 'A collection of projects, blogs and other portfolio'
 logo: 'assets/images/logo.png'
 favicon: 'assets/images/favicon.ico'
-baseurl: '/mundana-theme-jekyll'
+baseurl: 
 domain: 'https://singhpallavi819.github.io'
 disqus: 'demowebsite'
 email: 'wowthemesnet@gmail.com'
