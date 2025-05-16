@@ -20,21 +20,13 @@ plugins:
   - jekyll-seo-tag
   
 authors:
-    sal:
-      name:           Sal
-      site:           https://www.wowthemes.net
+    pal:
+      name:           Pallavi
+      site:           singhpallavi819.github.io
       avatar:         /assets/images/avatar1.jpg
-      bio:            "Hi, I am Sal, the author of Mundana, the theme you're currently previewing. I hope you like it!"
-      email:          wowthemesnet@gmail.com
-      twitter:        https://twitter.com/wowthemesnet
+      bio:            "Hi, I am Pallavi. This website is where I collect all my projects, blogs and other details"
+      email:          singhpallavi819@yahoo.com
 
-    jane:
-      name:           Jane
-      site:           https://www.wowthemes.net
-      avatar:         /assets/images/avatar2.jpg
-      bio:            "Blogger, fashionista, love to explore new ideas and write on my morning coffee!"
-      email:          fakemail@gmail.com
-      twitter:        https://twitter.com/wowthemesnet
  
 # Defaults
 defaults:
@@ -44,7 +36,7 @@ defaults:
       path: "_posts"
     values:
       layout: post
-      author: sal
+      author: pal
       avatar: /assets/images/avatar1.jpg
       
   # all pages
