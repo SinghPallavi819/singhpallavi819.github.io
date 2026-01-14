@@ -2,6 +2,7 @@
 layout: post
 title: "Brute Force Attack Detection using Splunk"
 categories: [projects]
+categorieslink: "/#projects"
 excerpt: "Splunk detection and dashboard to identify repeated failed SSH login attempts by source IP and user."
 ---
 
