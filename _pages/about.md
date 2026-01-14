@@ -6,7 +6,7 @@ permalink: /about/
 
 <div class="hero-card">
   <div class="hero-left">
-    <h1 class="hero-title">Pallavi Singh</h1>
+    <h1 class="hero-title">Pallavi</h1>
     <p class="hero-subtitle">
       Cybersecurity graduate student focused on SOC operations, security monitoring,
       and incident-driven detection. I work hands-on with SIEM tools, logs, cloud data,
