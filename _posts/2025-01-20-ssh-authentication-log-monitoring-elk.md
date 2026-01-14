@@ -71,8 +71,8 @@ These logs included:
 - Invalid user login attempts
 - Repeated authentication failures
 
-📸 **Screenshot – Raw SSH authentication logs (terminal)**  
-`/assets/images/logstash-running.png`  
+**Screenshot – Raw SSH authentication logs (terminal)**  
+(/assets/images/logstash-running.png) 
 *(Redact usernames, IP addresses, and hostnames)*
 
 ---
@@ -97,8 +97,8 @@ After ingestion:
 - SSH logs appeared in Elasticsearch indices
 - Index health and document counts were validated
 
-📸 **Screenshot – Elasticsearch index showing ssh-auth data**  
-`/assets/images/kibana-index-pattern.png`
+**Screenshot – Elasticsearch index showing ssh-auth data**  
+(/assets/images/kibana-index-pattern.png)
 
 ---
 
@@ -111,8 +111,8 @@ This allowed inspection of:
 - Invalid user activity
 - Source patterns over time
 
-📸 **Screenshot – Kibana Discover showing failed SSH logins**  
-`/assets/images/failed-password.png`  
+**Screenshot – Kibana Discover showing failed SSH logins**  
+(/assets/images/failed-password.png)  
 *(Blur IPs and usernames before publishing)*
 
 ---
@@ -123,8 +123,8 @@ Using Kibana’s timeline view, authentication failures were analyzed to:
 - Observe repeated failures from the same source
 - Understand how brute-force behavior appears in logs
 
-📸 **Screenshot – Kibana timeline view of SSH failures**  
-`/assets/images/kibana-running.png`
+**Screenshot – Kibana timeline view of SSH failures**  
+(/assets/images/kibana-running.png)
 
 ---
 
