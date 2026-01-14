@@ -15,6 +15,24 @@ title: Pallavi | Cybersecurity Portfolio
   .wrap{max-width:1040px;margin:0 auto;padding:44px 18px}
   .hero{display:grid;grid-template-columns:1.4fr .8fr;gap:22px;align-items:start}
   @media (max-width:900px){.hero{grid-template-columns:1fr}}
+  /* Hero: photo + text layout */
+.hero-card .hero-main{
+  display:flex;
+  gap:16px;
+  align-items:flex-start;
+}
+.avatar{
+  width:84px;
+  height:84px;
+  border-radius:18px;
+  object-fit:cover;
+  border:1px solid rgba(17,24,39,.10);
+  box-shadow: 0 10px 25px rgba(17,24,39,.10);
+}
+@media (max-width:640px){
+  .hero-card .hero-main{flex-direction:column}
+  .avatar{width:74px;height:74px}
+}
 
   /* Cards */
   .card{
@@ -92,6 +110,7 @@ title: Pallavi | Cybersecurity Portfolio
   .proj h3{margin:0 0 6px;font-size:16px}
   .proj a{text-decoration:none;color:#111827}
   .proj p{margin:0;color:#4b5563;font-size:13.5px}
+  .hero-main > div { min-width: 0; }
 
   .footer{margin-top:28px;border-top:1px solid rgba(17,24,39,.08);padding-top:16px;color:#6b7280;font-size:13px}
 </style>
@@ -119,7 +138,7 @@ title: Pallavi | Cybersecurity Portfolio
 
         <div class="btns">
           <a class="btn primary" href="{{ '/resume.pdf' | relative_url }}">Resume</a>
-          <a class="btn" href="{{ '/#projects' | relative_url }}">Projects</a>
+          <a class="btn" href="{{ '/' | relative_url }}#projects">Projects</a>
           <a class="btn" href="https://github.com/SinghPallavi819" target="_blank" rel="noreferrer">GitHub</a>
           <a class="btn" href="https://www.linkedin.com/" target="_blank" rel="noreferrer">LinkedIn</a>
           <a class="btn" href="mailto:pallavisingh819@yahoo.com">Email</a>
@@ -140,5 +159,11 @@ title: Pallavi | Cybersecurity Portfolio
     </div>
   </div>
 </div>
+  <div class="section" id="projects">
+  <h2>Projects</h2>
+  <p class="muted">Click a project to see detection logic, screenshots, and results.</p>
+  <!-- your project grid here -->
+</div>
+
 
 </div>
