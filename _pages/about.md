@@ -7,10 +7,18 @@ permalink: /about/
 <div class="hero-card">
   <div class="hero-left">
     <h1 class="hero-title">Pallavi</h1>
+
     <p class="hero-subtitle">
-      Cybersecurity graduate student focused on SOC operations, security monitoring,
-      and incident-driven detection. I work hands-on with SIEM tools, logs, cloud data,
-      and defensive labs to identify and explain security threats.
+      I am a cybersecurity graduate student with a strong foundation in software development,
+      now transitioning fully into defensive security. My interest lies in understanding how
+      systems behave under attack, how threats surface in logs, and how security teams detect,
+      analyze, and respond to real incidents.
+    </p>
+
+    <p class="hero-subtitle">
+      I learn cybersecurity by doing. I actively solve hands-on challenges, analyze logs,
+      build detections, and document my findings clearly. I believe strong security comes from
+      curiosity, consistency, and the ability to explain complex issues in simple terms.
     </p>
 
     <div class="hero-tags">
@@ -30,41 +38,71 @@ permalink: /about/
 
   <div class="hero-right">
     <div class="mini-card">
-      <h3>Target Roles</h3>
-      <p>Cyber Security Intern / SOC Analyst Intern</p>
+      <h3>Community & Practice</h3>
+      <p>
+        I am an active member of <b>Women in Cybersecurity (WiCyS)</b> and regularly engage
+        in cybersecurity communities to learn, share, and grow.
+      </p>
+      <p>
+        I practice cybersecurity daily through <b>TryHackMe</b>, where I solve challenges,
+        complete labs, and continuously strengthen my understanding of real-world attack and
+        defense scenarios.
+      </p>
     </div>
 
     <div class="mini-card">
-      <h3>What I Work With</h3>
+      <h3>How I Learn</h3>
       <ul>
-        <li>SIEM alerts, dashboards, and SPL queries</li>
-        <li>Authentication, system, and network logs</li>
-        <li>AWS CloudTrail & GuardDuty data</li>
-        <li>Incident documentation and reporting</li>
+        <li>Hands-on labs and security challenges</li>
+        <li>Log analysis and detection writing</li>
+        <li>Breaking down attacks step by step</li>
+        <li>Documenting findings and lessons learned</li>
       </ul>
     </div>
   </div>
 </div>
 
 <div class="section-card">
-  <h2>Core Strengths</h2>
+  <h2>Academic Focus & Training</h2>
+  <p>
+    I am currently pursuing a Master’s degree in Computer Science with a strong focus on
+    cybersecurity. My coursework emphasizes defensive security, threat analysis, system-level
+    understanding, and data-driven security decisions.
+  </p>
+
   <ul class="two-col">
-    <li><b>Monitoring & Detection:</b> threat detection, brute-force analysis, alert triage</li>
-    <li><b>SIEM & Tools:</b> Splunk Cloud, ELK Stack, Zeek, Wireshark, Burp Suite</li>
-    <li><b>Cloud Security:</b> AWS (S3, EC2, IAM, CloudTrail, GuardDuty)</li>
-    <li><b>Automation:</b> Python scripting, Bash, Nmap-based scanning</li>
-    <li><b>Web Security:</b> OWASP Top 10, HTTPS, secure headers</li>
-    <li><b>Compliance:</b> GDPR/CCPA awareness, secure data handling</li>
+    <li><b>Cyber Security: Defense</b></li>
+    <li><b>Cyber Security: Forensics and Attack Analysis</b></li>
+    <li><b>Advanced Threat Analysis</b></li>
+    <li><b>Cyber Security and Information Assurance</b></li>
+    <li><b>Systems Programming</b></li>
+    <li><b>Machine Learning</b></li>
+    <li><b>Data Visualization</b></li>
   </ul>
+
+  <p>
+    In parallel, I am enrolled in the <b>CodePath Cybersecurity Intermediate program</b>, where
+    I work on hands-on security projects, collaborate in team-based environments, and gain
+    experience simulating real-world security workflows.
+  </p>
 </div>
 
 <div class="section-card">
   <h2>How I Approach Security</h2>
   <ol class="clean-list">
-    <li>Understand the environment and log sources</li>
-    <li>Identify realistic attack or misuse scenarios</li>
-    <li>Write detections and validate results</li>
-    <li>Correlate data across tools and platforms</li>
-    <li>Document incidents clearly for stakeholders</li>
+    <li>Understand systems, assets, and log sources</li>
+    <li>Think like an attacker to identify realistic abuse scenarios</li>
+    <li>Write detections and validate them with data</li>
+    <li>Correlate signals across multiple tools</li>
+    <li>Document incidents clearly and thoughtfully</li>
   </ol>
+</div>
+
+<div class="section-card">
+  <h2>Beyond Cybersecurity</h2>
+  <p>
+    Outside of security, I enjoy reading books, cooking, and listening to music. These hobbies
+    help me stay creative, balanced, and focused—skills that also influence how I approach
+    problem-solving in cybersecurity.
+  </p>
 </div>
