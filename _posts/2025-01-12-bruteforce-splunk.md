@@ -30,3 +30,10 @@ The detection looks for repeated "Failed password" events from the same source I
 | where failures >= 3
 | sort - failures
 ```
+## Dashboard Overview
+
+![Splunk Dashboard – Failed Login Attempts](/assets/images/bruteforce-dashboard.png)
+
+## Detection Results
+
+![Brute Force Detection Search Results](/assets/images/bruteforce-detection.png)
