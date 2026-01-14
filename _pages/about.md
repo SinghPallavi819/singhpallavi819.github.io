@@ -30,10 +30,6 @@ permalink: /about/
       <span class="tag">Linux</span>
     </div>
 
-    <div class="hero-actions">
-      <a class="btn-primary" href="{{ '/' | relative_url }}#projects">View Projects</a>
-      <a class="btn-outline" href="{{ '/contact' | relative_url }}">Contact</a>
-    </div>
   </div>
 
   <div class="hero-right">
@@ -53,10 +49,10 @@ permalink: /about/
     <div class="mini-card">
       <h3>How I Learn</h3>
       <ul>
-        <li>Hands-on labs and security challenges</li>
-        <li>Log analysis and detection writing</li>
-        <li>Breaking down attacks step by step</li>
-        <li>Documenting findings and lessons learned</li>
+      - Hands-on labs and security challenges/n
+      - Log analysis and detection writing/n
+      - Breaking down attacks step by step/n
+      - Documenting findings and lessons learned/n
       </ul>
     </div>
   </div>
@@ -79,7 +75,7 @@ permalink: /about/
     <li><b>Machine Learning</b></li>
     <li><b>Data Visualization</b></li>
   </ul>
-
+<br>
   <p>
     In parallel, I am enrolled in the <b>CodePath Cybersecurity Intermediate program</b>, where
     I work on hands-on security projects, collaborate in team-based environments, and gain
