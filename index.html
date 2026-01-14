@@ -13,6 +13,13 @@ title: Pallavi | Cybersecurity Portfolio
   }
 
   .wrap{max-width:1040px;margin:0 auto;padding:44px 18px}
+ 
+  html, body{
+  height:auto;
+  min-height:100%;
+  overflow-y:auto;
+}
+
 
   /* HERO LAYOUT */
   .hero{
@@ -33,29 +40,6 @@ title: Pallavi | Cybersecurity Portfolio
     background: rgba(255,255,255,.78);
     backdrop-filter: blur(10px);
     box-shadow: 0 18px 60px rgba(17,24,39,.08);
-  }
-
-  /* Hero: photo + text layout */
-  .hero-card .hero-main{
-    display:flex;
-    gap:16px;
-    align-items:center;
-  }
-  .hero-main > div { min-width: 0; }
-
-  .avatar{
-    width:84px;
-    height:84px;
-    border-radius:18px;
-    object-fit:cover;
-    border:1px solid rgba(17,24,39,.10);
-    box-shadow: 0 10px 25px rgba(17,24,39,.10);
-    display:block;
-    background:rgba(255,255,255,.6);
-  }
-  @media (max-width:640px){
-    .hero-card .hero-main{flex-direction:column; align-items:flex-start}
-    .avatar{width:74px;height:74px}
   }
 
   /* Title with gradient */
@@ -118,12 +102,11 @@ title: Pallavi | Cybersecurity Portfolio
   }
   .btn:hover{
     transform:translateY(-1px);
-    box-shadow:0 10px 22px rgba(17,24,39,.10)
+    box-shadow:0 10px 22px rgba(17,24,39,.10);
   }
   .btn.primary{
     color:#fff;
     border:none;
-    background: linear-gradient(90deg,#4f46e5,#06b6d4 revealed);
     background: linear-gradient(90deg,#4f46e5,#06b6d4);
   }
 
@@ -134,6 +117,23 @@ title: Pallavi | Cybersecurity Portfolio
 
   /* Anchor jump spacing (header won’t cover Projects title) */
   #projects{scroll-margin-top:90px;}
+
+  /* RIGHT CARD PHOTO (top) */
+  .profile-top{
+    display:flex;
+    justify-content:flex-start;
+    margin-bottom:12px;
+  }
+  .profile-photo{
+    width:110px;
+    height:110px;
+    border-radius:18px;
+    object-fit:cover;
+    border:1px solid rgba(17,24,39,.10);
+    box-shadow: 0 12px 28px rgba(17,24,39,.12);
+    background:rgba(255,255,255,.6);
+    display:block;
+  }
 
   /* Project cards */
   .grid{
@@ -191,69 +191,77 @@ title: Pallavi | Cybersecurity Portfolio
 </style>
 
 <div class="wrap">
+
   <div class="hero">
-  <div class="card hero-card">
-    <div class="hero-main">
-      <img class="avatar" src="{{ '/assets/images/DSC_2071.JPG' | relative_url }}" alt="Pallavi" />
 
-      <div>
-        <h1 class="title">Pallavi</h1>
-        <p class="subtitle">
-          Cybersecurity graduate student focused on SOC monitoring, detection engineering, and incident response.
-          I build SIEM + log-based projects (Splunk/ELK) with dashboards, alerts, and clear write-ups.
-        </p>
+    <!-- LEFT CARD -->
+    <div class="card hero-card">
+      <h1 class="title">Pallavi</h1>
 
-        <div class="chips">
-          <span class="chip">Splunk (Cloud & SPL)</span>
-          <span class="chip">ELK Stack</span>
-          <span class="chip">AWS Security</span>
-          <span class="chip">IR & Triage</span>
-          <span class="chip">Linux</span>
-        </div>
+      <p class="subtitle">
+        Cybersecurity graduate student focused on SOC monitoring, detection engineering, and incident response.
+        I build SIEM + log-based projects (Splunk/ELK) with dashboards, alerts, and clear write-ups.
+      </p>
 
-        <div class="btns">
-          <a class="btn primary" href="{{ '/resume.pdf' | relative_url }}">Resume</a>
-          <a class="btn" href="{{ '/' | relative_url }}#projects">Projects</a>
-          <a class="btn" href="https://github.com/SinghPallavi819" target="_blank" rel="noreferrer">GitHub</a>
-          <a class="btn" href="https://www.linkedin.com/" target="_blank" rel="noreferrer">LinkedIn</a>
-          <a class="btn" href="mailto:pallavisingh819@yahoo.com">Email</a>
-        </div>
+      <div class="chips">
+        <span class="chip">Splunk (Cloud & SPL)</span>
+        <span class="chip">ELK Stack</span>
+        <span class="chip">AWS Security</span>
+        <span class="chip">IR & Triage</span>
+        <span class="chip">Linux</span>
+      </div>
+
+      <div class="btns">
+        <a class="btn primary" href="{{ '/resume.pdf' | relative_url }}">Resume</a>
+        <a class="btn" href="{{ '/' | relative_url }}#projects">Projects</a>
+        <a class="btn" href="https://github.com/SinghPallavi819" target="_blank" rel="noreferrer">GitHub</a>
+        <a class="btn" href="https://www.linkedin.com/" target="_blank" rel="noreferrer">LinkedIn</a>
+        <a class="btn" href="mailto:pallavisingh819@yahoo.com">Email</a>
       </div>
     </div>
+
+    <!-- RIGHT CARD -->
+    <div class="card">
+      <div class="profile-top">
+        <img class="profile-photo" src="{{ '/assets/images/DSC_2071.JPG' | relative_url }}" alt="Pallavi" />
+      </div>
+
+      <h2 style="margin:0 0 8px;font-size:18px;">What I’m looking for</h2>
+      <p class="muted">SOC Analyst / Security Analyst Intern (monitoring, triage, dashboards, cloud security).</p>
+
+      <div class="section">
+        <h2>Highlights</h2>
+        <p class="muted">• Built detections + dashboards in Splunk Cloud</p>
+        <p class="muted">• SSH log monitoring in ELK (Kibana visualizations)</p>
+        <p class="muted">• AWS CloudTrail detection scripting (Python)</p>
+      </div>
+    </div>
+
   </div>
 
-  <div class="card">
-    <h2 style="margin:0 0 8px;font-size:18px;">What I’m looking for</h2>
-    <p class="muted">SOC Analyst / Security Analyst Intern (monitoring, triage, dashboards, cloud security).</p>
+  <!-- PROJECTS SECTION -->
+  <div class="section" id="projects">
+    <h2>Projects</h2>
+    <p class="muted">Click a project to see the detection logic, dashboard screenshots, and results.</p>
 
-    <div class="section">
-      <h2>Highlights</h2>
-      <p class="muted">• Built detections + dashboards in Splunk Cloud</p>
-      <p class="muted">• SSH log monitoring in ELK (Kibana visualizations)</p>
-      <p class="muted">• AWS CloudTrail detection scripting (Python)</p>
+    <div class="grid">
+      {% for post in site.posts limit: 12 %}
+        <a class="proj proj-link" href="{{ post.url | relative_url }}">
+          {% if post.thumbnail %}
+            <img class="proj-thumb" src="{{ post.thumbnail | relative_url }}" alt="{{ post.title }}">
+          {% endif %}
+          <h3>{{ post.title }}</h3>
+          <p>{{ post.excerpt | strip_html | truncate: 120 }}</p>
+        </a>
+      {% endfor %}
+
+      {% if site.posts.size == 0 %}
+        <div class="proj">
+          <h3>No projects yet</h3>
+          <p>Add a post in <code>_posts/</code> and it will appear here.</p>
+        </div>
+      {% endif %}
     </div>
   </div>
-</div>
-    </div>
-</div>
-
-<!-- PROJECTS SECTION -->
-<div class="section" id="projects">
-  <h2>Projects</h2>
-  <p class="muted">Click a project to see the detection logic, dashboard screenshots, and results.</p>
-
-  <div class="grid">
-    {% for post in site.posts limit: 12 %}
-      <a class="proj proj-link" href="{{ post.url | relative_url }}">
-        {% if post.thumbnail %}
-          <img class="proj-thumb" src="{{ post.thumbnail | relative_url }}" alt="{{ post.title }}">
-        {% endif %}
-        <h3>{{ post.title }}</h3>
-        <p>{{ post.excerpt | strip_html | truncate: 120 }}</p>
-      </a>
-    {% endfor %}
-  </div>
-</div>
-
 
 </div>
