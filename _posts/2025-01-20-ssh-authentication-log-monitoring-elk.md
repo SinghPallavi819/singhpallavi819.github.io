@@ -9,15 +9,12 @@ excerpt: "Built an end-to-end SSH log monitoring lab using Docker-based ELK on m
 ## Overview
 
 This project demonstrates a **realistic SOC-style log monitoring and investigation workflow** using the ELK Stack (Elasticsearch, Logstash, Kibana).
-
 The goal was to understand **how raw Linux SSH authentication logs are collected, parsed, indexed, and investigated**, rather than relying on prebuilt alerts or managed SIEM platforms.
-
 This lab intentionally focuses on **visibility and investigation**, which is a core responsibility of SOC and Blue Team analysts.
 
 ---
 
 ## What is ELK and Why It’s Used
-
 The **ELK Stack** is commonly used in security operations to centralize and analyze logs:
 - **Elasticsearch** stores and indexes log data for fast searching
 - **Logstash** ingests and parses raw logs into structured events
@@ -62,7 +59,6 @@ Key components:
 ### 2. Generated SSH Authentication Logs on Linux
 On the Ubuntu system, SSH authentication events were generated and written to:
 /var/log/auth.log
-
 These logs included:
 - Failed password attempts
 - Invalid user login attempts
@@ -75,10 +71,8 @@ Logstash was configured on Linux to:
 - Read SSH authentication logs
 - Parse log messages
 - Forward structured events to Elasticsearch
-
 Logs were indexed using a **time-based index pattern**:
 ssh-auth-YYYY.MM.DD
-
 This enabled efficient searching and time-based analysis.
 
 ---
@@ -137,7 +131,5 @@ Instead of automated rules, the focus was on:
 - Learned how logs move from ingestion to investigation
 - Practiced SOC-style log analysis without prebuilt detections
 - Strengthened understanding of centralized logging architectures
-
----
 
 ---
