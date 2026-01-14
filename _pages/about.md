@@ -26,7 +26,6 @@ permalink: /about/
       <span class="tag">ELK Stack</span>
       <span class="tag">Security Monitoring</span>
       <span class="tag">Incident Response</span>
-      <span class="tag">AWS Security</span>
       <span class="tag">Linux</span>
     </div>
 
