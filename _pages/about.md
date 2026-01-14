@@ -49,10 +49,10 @@ permalink: /about/
     <div class="mini-card">
       <h3>How I Learn</h3>
       <ul>
-      - Hands-on labs and security challenges/n
-      - Log analysis and detection writing/n
-      - Breaking down attacks step by step/n
-      - Documenting findings and lessons learned/n
+      <li>Hands-on labs and security challenges</li>
+      <li>Log analysis and detection writing</li>
+      <li>Breaking down attacks step by step</li>
+      <li>Documenting findings and lessons learned/</li>
       </ul>
     </div>
   </div>
@@ -102,3 +102,4 @@ permalink: /about/
     problem-solving in cybersecurity.
   </p>
 </div>
+
