@@ -4,74 +4,63 @@ title: About Me
 permalink: /about/
 ---
 
-<div class="about-hero">
-  <div class="about-card">
-    <div class="about-left">
-      <h1>Hi, I’m Pallavi 👋</h1>
-      <p class="lead">
-        Cybersecurity graduate student focused on security monitoring, detection, and reporting.
-        I build hands-on projects with logs, SIEM queries, dashboards, and simple automation.
-      </p>
+<div class="hero-card">
+  <div class="hero-left">
+    <h1 class="hero-title">Pallavi Singh</h1>
+    <p class="hero-subtitle">
+      Cybersecurity graduate student focused on security monitoring, detection, and SIEM (Splunk).
+      I build small, practical projects and write clear detection-focused documentation.
+    </p>
 
-      <div class="chip-row">
-        <span class="chip">SIEM (Splunk)</span>
-        <span class="chip">Detection</span>
-        <span class="chip">Log Analysis</span>
-        <span class="chip">Reporting</span>
-        <span class="chip">Cloud Security</span>
-      </div>
-
-      <div class="btn-row">
-        <a class="btn-grad" href="{{ site.baseurl }}/">View Projects</a>
-        <a class="btn-ghost" href="{{ site.baseurl }}/contact/">Contact</a>
-      </div>
+    <div class="hero-tags">
+      <span class="tag">Splunk (SPL)</span>
+      <span class="tag">Log Analysis</span>
+      <span class="tag">Detection Engineering (Basics)</span>
+      <span class="tag">Linux</span>
+      <span class="tag">Reporting</span>
     </div>
 
-    <div class="about-right">
-      <div class="mini-card">
-        <h3>What I’m building</h3>
-        <ul>
-          <li>Splunk detections + dashboards (log analysis, alerting)</li>
-          <li>SOC-style investigations using authentication and endpoint logs</li>
-          <li>Simple scripts/automation to support detection</li>
-        </ul>
-      </div>
+    <div class="hero-actions">
+      <a class="btn-primary" href="{{ '/' | relative_url }}#projects">View Projects</a>
+      <a class="btn-outline" href="{{ '/contact' | relative_url }}">Contact</a>
+    </div>
+  </div>
 
-      <div class="mini-card">
-        <h3>Skills</h3>
-        <ul>
-          <li><b>SIEM:</b> Splunk (SPL)</li>
-          <li><b>Security:</b> brute-force detection basics, log triage</li>
-          <li><b>Systems:</b> Linux fundamentals</li>
-        </ul>
-      </div>
+  <div class="hero-right">
+    <div class="mini-card">
+      <h3>What I’m targeting</h3>
+      <p>SOC Analyst / Security Analyst Intern (monitoring, alert triage, dashboards).</p>
+    </div>
+
+    <div class="mini-card">
+      <h3>What I bring</h3>
+      <ul>
+        <li>Splunk searches + dashboards</li>
+        <li>Clear write-ups with screenshots</li>
+        <li>Comfortable in Linux + basic scripting</li>
+      </ul>
     </div>
   </div>
 </div>
 
-<div class="about-grid">
-  <div class="mini-card">
-    <h3>Current Focus</h3>
-    <p class="muted">Detection engineering basics: write a detection, validate it, and show the results with visuals.</p>
-  </div>
+<div class="section-card">
+  <h2>Skills</h2>
+  <ul class="two-col">
+    <li><b>SIEM:</b> Splunk SPL, dashboards, basic alert logic</li>
+    <li><b>Log sources:</b> authentication / system logs (lab data)</li>
+    <li><b>Security:</b> brute-force detection basics, triage mindset</li>
+    <li><b>Systems:</b> Linux fundamentals</li>
+    <li><b>Documentation:</b> project write-ups, visuals, short summaries</li>
+  </ul>
+</div>
 
-  <div class="mini-card">
-    <h3>How I work</h3>
-    <ul>
-      <li>Start with a realistic log source</li>
-      <li>Create an SPL query + threshold</li>
-      <li>Validate results (false positives/tuning)</li>
-      <li>Build a dashboard + short write-up</li>
-    </ul>
-  </div>
-
-  <div class="mini-card">
-    <h3>Contact</h3>
-    <ul class="clean-list">
-      <li><b>Email:</b> pallavisingh819@yahoo.com</li>
-      <li><b>GitHub:</b> <a href="https://github.com/SinghPallavi819" target="_blank">github.com/SinghPallavi819</a></li>
-      <!-- Add LinkedIn when ready -->
-      <!-- <li><b>LinkedIn:</b> <a href="https://www.linkedin.com/in/..." target="_blank">linkedin.com/in/...</a></li> -->
-    </ul>
-  </div>
+<div class="section-card">
+  <h2>How I build projects</h2>
+  <ol class="clean-list">
+    <li>Choose a realistic log dataset (lab or sample)</li>
+    <li>Write SPL with a clear threshold/logic</li>
+    <li>Validate results (reduce false positives where possible)</li>
+    <li>Create a dashboard + include screenshots</li>
+    <li>Document: goal → query → results → limitations → next steps</li>
+  </ol>
 </div>
