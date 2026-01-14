@@ -104,7 +104,6 @@ After ingestion:
 ### 5. Investigated Logs Using Kibana Discover
 Kibana Discover was used to investigate SSH activity by filtering for:
 "Failed password"
-
 This allowed inspection of:
 - Failed login attempts
 - Invalid user activity
@@ -120,6 +119,7 @@ Using Kibana’s timeline view, authentication failures were analyzed to:
 - Identify bursts of failed login attempts
 - Observe repeated failures from the same source
 - Understand how brute-force behavior appears in logs
+  
 ---
 
 ## Investigation Focus (SOC Perspective)
