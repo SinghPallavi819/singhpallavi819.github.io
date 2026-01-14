@@ -1,4 +1,4 @@
-# Pallavi Singh – Cybersecurity Portfolio
+# Pallavi – Cybersecurity Portfolio
 
 This repository hosts my personal cybersecurity portfolio and project work.
 It focuses on security monitoring, detection, and reporting using real-world
