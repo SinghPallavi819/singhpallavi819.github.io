@@ -29,3 +29,4 @@ The detection looks for repeated "Failed password" events from the same source I
 | stats count as failures by src_ip user _time
 | where failures >= 3
 | sort - failures
+```
