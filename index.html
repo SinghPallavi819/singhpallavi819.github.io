@@ -247,7 +247,7 @@ title: Pallavi | Cybersecurity Portfolio
       <!-- REAL PROJECTS (from posts) -->
       {% assign shown = 0 %}
       {% for post in site.posts %}
-        {% if shown < 2 %}
+        {% if shown < 3 %}
           <a class="project-card" href="{{ post.url | relative_url }}">
             <div class="project-image"></div>
 
@@ -261,28 +261,6 @@ title: Pallavi | Cybersecurity Portfolio
       {% endfor %}
 
       <!-- PLACEHOLDER PROJECTS (4 cards) -->
-      <div class="project-card">
-        <div class="project-image"></div>
-        <div class="project-body">
-          <h3>CloudTrail Threat Detection (AWS)</h3>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            Security events analyzed from AWS CloudTrail logs with alerting.
-          </p>
-        </div>
-      </div>
-
-      <div class="project-card">
-        <div class="project-image"></div>
-        <div class="project-body">
-          <h3>Linux Log Analysis & Alerting</h3>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            System authentication logs analyzed to identify suspicious behavior.
-          </p>
-        </div>
-      </div>
-
       <div class="project-card">
         <div class="project-image"></div>
         <div class="project-body">
