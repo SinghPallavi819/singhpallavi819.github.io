@@ -159,11 +159,29 @@ title: Pallavi | Cybersecurity Portfolio
     </div>
   </div>
 </div>
-  <div class="section" id="projects">
-  <h2>Projects</h2>
-  <p class="muted">Click a project to see detection logic, screenshots, and results.</p>
-  <!-- your project grid here -->
+    </div>
 </div>
 
+<!-- PROJECTS SECTION -->
+<<div class="section" id="projects">
+  <h2>Projects</h2>
+  <p class="muted">Click a project to see the detection logic, dashboard screenshots, and results.</p>
+
+  <div class="grid">
+    {% for post in site.posts limit: 12 %}
+      <div class="proj">
+        <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
+        <p>{{ post.excerpt | strip_html | truncate: 120 }}</p>
+      </div>
+    {% endfor %}
+
+    {% if site.posts.size == 0 %}
+      <div class="proj">
+        <h3>No projects yet</h3>
+        <p>Add a post in <code>_posts/</code> with a date like <code>2026-01-13-your-title.md</code>.</p>
+      </div>
+    {% endif %}
+  </div>
+</div>
 
 </div>
