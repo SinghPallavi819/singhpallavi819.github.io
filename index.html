@@ -141,7 +141,7 @@ title: Pallavi | Cybersecurity Portfolio
     <div class="grid">
       {% assign shown = 0 %}
       {% for post in site.posts %}
-        {% if post.categories contains "projects" %}
+        {% if post.categories contains "project" %}
           {% assign shown = shown | plus: 1 %}
           <div class="proj">
             <h3><a href="{{ post.url }}">{{ post.title }}</a></h3>
