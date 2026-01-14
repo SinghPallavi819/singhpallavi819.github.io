@@ -6,7 +6,7 @@ favicon: 'assets/images/favicon.ico'
 baseurl: 
 domain: 'https://singhpallavi819.github.io'
 disqus: 'demowebsite'
-email: 'wowthemesnet@gmail.com'
+email: 'pallavisingh819@yahoo.com'
   #mailchimp-list: 'https://wowthemes.us11.list-manage.com/subscribe/post?u=8aeb20a530e124561927d3bd8&amp;id=8c3d2d214b'
 
 include: ["_pages"]
@@ -19,12 +19,12 @@ plugins:
   - jekyll-paginate
   - jekyll-seo-tag
   
-authors:
+About:
     pal:
       name:           Pallavi
       site:           singhpallavi819.github.io
       avatar:         /assets/images/avatar1.jpg
-      bio:            "Hi, I am Pallavi. This website is where I collect all my projects, blogs and other details"
+      bio:            "Hi, I am Pallavi. This website is where I collect all my projects and 
       email:          singhpallavi819@yahoo.com
 
  
