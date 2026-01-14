@@ -3,48 +3,92 @@ layout: default
 title: Pallavi | Cybersecurity Portfolio
 ---
 
-<div style="max-width:980px;margin:0 auto;padding:28px 16px;">
+<style>
+  .wrap{max-width:1040px;margin:0 auto;padding:40px 18px}
+  .hero{display:grid;grid-template-columns:1.4fr .8fr;gap:22px;align-items:start}
+  @media (max-width:900px){.hero{grid-template-columns:1fr}}
+  .card{border:1px solid #eee;border-radius:18px;padding:18px 18px;box-shadow:0 8px 30px rgba(0,0,0,.04);background:#fff}
+  .title{font-size:34px;line-height:1.15;margin:0 0 8px}
+  .subtitle{margin:0;color:#555;font-size:15.5px}
+  .chips{margin-top:12px}
+  .chip{display:inline-block;border:1px solid #e7e7e7;border-radius:999px;padding:6px 10px;font-size:12px;margin:6px 8px 0 0;color:#333;background:#fafafa}
+  .btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+  .btn{display:inline-block;padding:10px 12px;border-radius:12px;border:1px solid #e7e7e7;text-decoration:none;color:#111;background:#fff}
+  .btn.primary{background:#111;color:#fff;border-color:#111}
+  .section{margin-top:26px}
+  .section h2{margin:0 0 10px;font-size:18px}
+  .muted{color:#666;font-size:14px;margin:0}
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:12px}
+  @media (max-width:980px){.grid{grid-template-columns:repeat(2,1fr)}}
+  @media (max-width:640px){.grid{grid-template-columns:1fr}}
+  .proj{border:1px solid #eee;border-radius:18px;padding:14px 14px;background:#fff}
+  .proj h3{margin:0 0 6px;font-size:16px}
+  .proj a{text-decoration:none;color:#111}
+  .proj p{margin:0;color:#666;font-size:13.5px}
+  .footer{margin-top:28px;border-top:1px solid #eee;padding-top:16px;color:#777;font-size:13px}
+</style>
 
-  <h1 style="margin:0 0 8px;">Pallavi</h1>
-  <p style="margin:0 0 18px;color:#444;">
-    Cybersecurity graduate student focused on security monitoring, detection, and reporting.
-  </p>
+<div class="wrap">
+  <div class="hero">
+    <div class="card">
+      <h1 class="title">Pallavi</h1>
+      <p class="subtitle">
+        Cybersecurity graduate student focused on security monitoring, detection, and reporting.
+        I build hands-on projects using logs, SIEM queries, dashboards, and simple automation.
+      </p>
 
-  <p style="margin:0 0 22px;">
-    <a href="/resume.pdf">Resume</a> ·
-    <a href="https://github.com/SinghPallavi819">GitHub</a> ·
-    <a href="https://www.linkedin.com/">LinkedIn</a> ·
-    <a href="mailto:pallavisingh819@yahoo.com">Email</a>
-  </p>
+      <div class="chips">
+        <span class="chip">SIEM (Splunk)</span>
+        <span class="chip">Log Analysis</span>
+        <span class="chip">Detection</span>
+        <span class="chip">Cloud Security</span>
+        <span class="chip">Reporting</span>
+      </div>
 
-  <hr style="border:none;border-top:1px solid #eee;margin:24px 0;">
+      <div class="btns">
+        <a class="btn primary" href="/resume.pdf">Resume</a>
+        <a class="btn" href="https://github.com/SinghPallavi819" target="_blank" rel="noreferrer">GitHub</a>
+        <a class="btn" href="https://www.linkedin.com/" target="_blank" rel="noreferrer">LinkedIn</a>
+        <a class="btn" href="mailto:pallavisingh819@yahoo.com">Email</a>
+      </div>
+    </div>
 
-  <h2 style="margin:0 0 10px;">Projects</h2>
-  <p style="margin:0 0 18px;color:#555;">
-    Projects include detection logic, dashboards or outputs, and screenshots.
-  </p>
+    <div class="card">
+      <h2 style="margin:0 0 8px;font-size:18px;">What I’m looking for</h2>
+      <p class="muted">Internships in SOC, security operations, information security, and cloud security.</p>
 
-  <div>
-    {% for post in site.posts %}
-      {% if post.categories contains "projects" %}
-        <div style="border:1px solid #eee;border-radius:12px;padding:14px 16px;margin:0 0 12px;">
-          <h3 style="margin:0 0 6px;">
-            <a href="{{ post.url }}">{{ post.title }}</a>
-          </h3>
-          {% if post.excerpt %}
-            <p style="margin:0;color:#555;">{{ post.excerpt | strip_html | truncate: 160 }}</p>
-          {% endif %}
-        </div>
-      {% endif %}
-    {% endfor %}
+      <div class="section">
+        <h2>Highlights</h2>
+        <p class="muted">• Built Splunk detection + dashboard for SSH brute force attempts</p>
+        <p class="muted">• Create clear security visuals and short write-ups</p>
+        <p class="muted">• Comfortable with Linux and basic scripting</p>
+      </div>
+    </div>
   </div>
 
-  <hr style="border:none;border-top:1px solid #eee;margin:24px 0;">
+  <div class="section">
+    <h2>Projects</h2>
+    <p class="muted">Click a project to see the detection logic, dashboard screenshots, and results.</p>
 
-  <h2 style="margin:0 0 10px;">About</h2>
-  <p style="margin:0;color:#555;">
-    I enjoy working with logs and SIEM tools to detect suspicious activity and create clear reporting.
-    I am looking for internships in SOC, security operations, information security, and cloud security.
-  </p>
+    <div class="grid">
+      {% assign shown = 0 %}
+      {% for post in site.posts %}
+        {% if post.categories contains "projects" %}
+          {% assign shown = shown | plus: 1 %}
+          <div class="proj">
+            <h3><a href="{{ post.url }}">{{ post.title }}</a></h3>
+            <p>{{ post.excerpt | strip_html | truncate: 120 }}</p>
+          </div>
+        {% endif %}
+      {% endfor %}
+      {% if shown == 0 %}
+        <div class="proj">
+          <h3>No projects yet</h3>
+          <p>Add a post in _posts/ with category: projects.</p>
+        </div>
+      {% endif %}
+    </div>
+  </div>
 
+  <div class="footer">© {{ "now" | date: "%Y" }} Pallavi Singh</div>
 </div>
