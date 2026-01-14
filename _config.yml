@@ -19,7 +19,7 @@ plugins:
   - jekyll-paginate
   - jekyll-seo-tag
   
-About:
+author:
     pal:
       name:           Pallavi
       site:           singhpallavi819.github.io
