@@ -239,51 +239,63 @@ title: Pallavi | Cybersecurity Portfolio
   </div>
 
   <!-- PROJECTS SECTION -->
-  <div class="section" id="projects">
-    <h2>Projects</h2>
+<div class="section" id="projects">
+  <h2>Projects</h2>
 
-    <div class="projects-grid">
+  <div class="projects-grid">
 
-      <!-- REAL PROJECTS (from posts) -->
-      {% assign shown = 0 %}
-      {% for post in site.posts %}
-        {% if shown < 3 %}
-          <a class="project-card" href="{{ post.url | relative_url }}">
-            <div class="project-image"></div>
+    <!-- REAL PROJECTS (latest 3 posts) -->
+    {% assign shown = 0 %}
+    {% for post in site.posts %}
+      {% if shown < 3 %}
+        <a class="project-card" href="{{ post.url | relative_url }}">
+          <div class="project-image"></div>
 
-            <div class="project-body">
-              <h3>{{ post.title }}</h3>
-              <p>{{ post.excerpt | strip_html | truncate: 140 }}</p>
-            </div>
-          </a>
-          {% assign shown = shown | plus: 1 %}
-        {% endif %}
-      {% endfor %}
+          <div class="project-body">
+            <h3>{{ post.title }}</h3>
+            <p>{{ post.excerpt | strip_html | truncate: 140 }}</p>
+          </div>
+        </a>
+        {% assign shown = shown | plus: 1 %}
+      {% endif %}
+    {% endfor %}
 
-      <!-- PLACEHOLDER PROJECTS (4 cards) -->
-      <div class="project-card">
-        <div class="project-image"></div>
-        <div class="project-body">
-          <h3>SIEM Dashboard Optimization</h3>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            SOC dashboards designed for faster triage and visibility.
-          </p>
-        </div>
+    <!-- COMING SOON PROJECTS (REAL, FROM RESUME / LINKEDIN) -->
+
+    <div class="project-card">
+      <div class="project-image"></div>
+      <div class="project-body">
+        <h3>Network Vulnerability Scanner (Python + Nmap)</h3>
+        <p>
+          Coming soon. Built a Python-based CLI tool using Nmap to identify
+          open ports and map findings to known CVEs for vulnerability awareness.
+        </p>
       </div>
-
-      <div class="project-card">
-        <div class="project-image"></div>
-        <div class="project-body">
-          <h3>Incident Response Playbooks</h3>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            Documented response steps for common SOC alert scenarios.
-          </p>
-        </div>
-      </div>
-
     </div>
+
+    <div class="project-card">
+      <div class="project-image"></div>
+      <div class="project-body">
+        <h3>CloudTrail Threat Detection (AWS + Python)</h3>
+        <p>
+          Coming soon. Python script to analyze CloudTrail logs and detect
+          high-risk AWS API activity with alerting via email and Slack.
+        </p>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-image"></div>
+      <div class="project-body">
+        <h3>AWS S3 Security Audit Tool</h3>
+        <p>
+          Coming soon. Automated audit of S3 buckets to detect public access,
+          missing encryption, disabled versioning, and generate CSV reports.
+        </p>
+      </div>
+    </div>
+
   </div>
+</div>
 
 </div>
