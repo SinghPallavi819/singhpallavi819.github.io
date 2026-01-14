@@ -57,9 +57,6 @@ Key components:
 - Confirmed containers were running
 - Verified Elasticsearch API accessibility
 
-**Screenshot – Docker containers running (macOS)**  
-![Docker ELK Stack Running](/assets/images/docker_running.png)
-
 ---
 
 ### 2. Generated SSH Authentication Logs on Linux
@@ -70,9 +67,6 @@ These logs included:
 - Failed password attempts
 - Invalid user login attempts
 - Repeated authentication failures
-
-**Screenshot – Raw SSH authentication logs (terminal)**  
-![Logstash Running](/assets/images/logstash-running.png) 
 
 ---
 
@@ -86,8 +80,6 @@ Logs were indexed using a **time-based index pattern**:
 ssh-auth-YYYY.MM.DD
 
 This enabled efficient searching and time-based analysis.
-**Screenshot – Logstash pipeline running successfully**  
-![Logstash Running](/assets/images/logstash-running.png) 
 
 ---
 
@@ -95,9 +87,6 @@ This enabled efficient searching and time-based analysis.
 After ingestion:
 - SSH logs appeared in Elasticsearch indices
 - Index health and document counts were validated
-
-**Screenshot – Elasticsearch index showing ssh-auth data**  
-![Kibana Running](/assets/images/kibana-index-pattern.png)
 
 ---
 
@@ -108,9 +97,6 @@ This allowed inspection of:
 - Failed login attempts
 - Invalid user activity
 - Source patterns over time
-
-**Screenshot – Kibana Discover showing failed SSH logins**  
-![Kibana Discover – Failed SSH Logins](/assets/images/failed-password.png)  
 
 ---
 
@@ -153,13 +139,5 @@ Instead of automated rules, the focus was on:
 - Strengthened understanding of centralized logging architectures
 
 ---
-
-## Notes on Data Privacy
-All screenshots used in this project:
-- Have IP addresses redacted
-- Have usernames anonymized
-- Do not expose hostnames or internal network details
-
-This reflects real-world security reporting standards.
 
 ---
