@@ -8,16 +8,18 @@ permalink: /about/
   <div class="hero-left">
     <h1 class="hero-title">Pallavi Singh</h1>
     <p class="hero-subtitle">
-      Cybersecurity graduate student focused on security monitoring, detection, and SIEM (Splunk).
-      I build small, practical projects and write clear detection-focused documentation.
+      Cybersecurity graduate student focused on SOC operations, security monitoring,
+      and incident-driven detection. I work hands-on with SIEM tools, logs, cloud data,
+      and defensive labs to identify and explain security threats.
     </p>
 
     <div class="hero-tags">
-      <span class="tag">Splunk (SPL)</span>
-      <span class="tag">Log Analysis</span>
-      <span class="tag">Detection Engineering (Basics)</span>
+      <span class="tag">Splunk (Cloud & SPL)</span>
+      <span class="tag">ELK Stack</span>
+      <span class="tag">Security Monitoring</span>
+      <span class="tag">Incident Response</span>
+      <span class="tag">AWS Security</span>
       <span class="tag">Linux</span>
-      <span class="tag">Reporting</span>
     </div>
 
     <div class="hero-actions">
@@ -28,39 +30,41 @@ permalink: /about/
 
   <div class="hero-right">
     <div class="mini-card">
-      <h3>What I’m targeting</h3>
-      <p>SOC Analyst / Security Analyst Intern (monitoring, alert triage, dashboards).</p>
+      <h3>Target Roles</h3>
+      <p>Cyber Security Intern / SOC Analyst Intern</p>
     </div>
 
     <div class="mini-card">
-      <h3>What I bring</h3>
+      <h3>What I Work With</h3>
       <ul>
-        <li>Splunk searches + dashboards</li>
-        <li>Clear write-ups with screenshots</li>
-        <li>Comfortable in Linux + basic scripting</li>
+        <li>SIEM alerts, dashboards, and SPL queries</li>
+        <li>Authentication, system, and network logs</li>
+        <li>AWS CloudTrail & GuardDuty data</li>
+        <li>Incident documentation and reporting</li>
       </ul>
     </div>
   </div>
 </div>
 
 <div class="section-card">
-  <h2>Skills</h2>
+  <h2>Core Strengths</h2>
   <ul class="two-col">
-    <li><b>SIEM:</b> Splunk SPL, dashboards, basic alert logic</li>
-    <li><b>Log sources:</b> authentication / system logs (lab data)</li>
-    <li><b>Security:</b> brute-force detection basics, triage mindset</li>
-    <li><b>Systems:</b> Linux fundamentals</li>
-    <li><b>Documentation:</b> project write-ups, visuals, short summaries</li>
+    <li><b>Monitoring & Detection:</b> threat detection, brute-force analysis, alert triage</li>
+    <li><b>SIEM & Tools:</b> Splunk Cloud, ELK Stack, Zeek, Wireshark, Burp Suite</li>
+    <li><b>Cloud Security:</b> AWS (S3, EC2, IAM, CloudTrail, GuardDuty)</li>
+    <li><b>Automation:</b> Python scripting, Bash, Nmap-based scanning</li>
+    <li><b>Web Security:</b> OWASP Top 10, HTTPS, secure headers</li>
+    <li><b>Compliance:</b> GDPR/CCPA awareness, secure data handling</li>
   </ul>
 </div>
 
 <div class="section-card">
-  <h2>How I build projects</h2>
+  <h2>How I Approach Security</h2>
   <ol class="clean-list">
-    <li>Choose a realistic log dataset (lab or sample)</li>
-    <li>Write SPL with a clear threshold/logic</li>
-    <li>Validate results (reduce false positives where possible)</li>
-    <li>Create a dashboard + include screenshots</li>
-    <li>Document: goal → query → results → limitations → next steps</li>
+    <li>Understand the environment and log sources</li>
+    <li>Identify realistic attack or misuse scenarios</li>
+    <li>Write detections and validate results</li>
+    <li>Correlate data across tools and platforms</li>
+    <li>Document incidents clearly for stakeholders</li>
   </ol>
 </div>
