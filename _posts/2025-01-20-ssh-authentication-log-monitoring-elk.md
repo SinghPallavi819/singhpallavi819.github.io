@@ -58,7 +58,7 @@ Key components:
 - Verified Elasticsearch API accessibility
 
 **Screenshot – Docker containers running (macOS)**  
-`/assets/images/docker_running.png`
+![Docker ELK Stack Running](/assets/images/docker_running.png)
 
 ---
 
@@ -72,8 +72,7 @@ These logs included:
 - Repeated authentication failures
 
 **Screenshot – Raw SSH authentication logs (terminal)**  
-(/assets/images/logstash-running.png) 
-*(Redact usernames, IP addresses, and hostnames)*
+![Logstash Running](/assets/images/logstash-running.png) 
 
 ---
 
@@ -88,7 +87,7 @@ ssh-auth-YYYY.MM.DD
 
 This enabled efficient searching and time-based analysis.
 **Screenshot – Logstash pipeline running successfully**  
-`/assets/images/logstash-running.png`
+![Logstash Running](/assets/images/logstash-running.png) 
 
 ---
 
@@ -98,7 +97,7 @@ After ingestion:
 - Index health and document counts were validated
 
 **Screenshot – Elasticsearch index showing ssh-auth data**  
-(/assets/images/kibana-index-pattern.png)
+![Kibana Running](/assets/images/kibana-index-pattern.png)
 
 ---
 
@@ -112,8 +111,7 @@ This allowed inspection of:
 - Source patterns over time
 
 **Screenshot – Kibana Discover showing failed SSH logins**  
-(/assets/images/failed-password.png)  
-*(Blur IPs and usernames before publishing)*
+![Kibana Discover – Failed SSH Logins](/assets/images/failed-password.png)  
 
 ---
 
@@ -122,10 +120,6 @@ Using Kibana’s timeline view, authentication failures were analyzed to:
 - Identify bursts of failed login attempts
 - Observe repeated failures from the same source
 - Understand how brute-force behavior appears in logs
-
-**Screenshot – Kibana timeline view of SSH failures**  
-(/assets/images/kibana-running.png)
-
 ---
 
 ## Investigation Focus (SOC Perspective)
