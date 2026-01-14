@@ -8460,3 +8460,65 @@ html {
     align-self: baseline !important; }
   .align-self-xl-stretch {
     align-self: stretch !important; } }
+/* ========= GLOBAL CARD GRADIENT SYSTEM ========= */
+
+/* Main cards (hero, section, right card) */
+.card,
+.hero-card,
+.section-card {
+  background: linear-gradient(
+    145deg,
+    rgba(255,255,255,0.95),
+    rgba(240,245,255,0.85)
+  );
+}
+
+/* Mini cards (About page right side) */
+.mini-card {
+  background: linear-gradient(
+    145deg,
+    rgba(248,250,255,0.95),
+    rgba(235,245,255,0.85)
+  );
+}
+
+/* Project cards */
+.project-card {
+  background: linear-gradient(
+    160deg,
+    rgba(255,255,255,0.96),
+    rgba(235,245,255,0.90)
+  );
+}
+
+/* Hover enhancement (projects only) */
+.project-card:hover {
+  background: linear-gradient(
+    160deg,
+    rgba(255,255,255,1),
+    rgba(225,235,255,0.95)
+  );
+}
+
+/* Optional: subtle top glow accent */
+.card::before,
+.section-card::before,
+.project-card::before {
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius:inherit;
+  pointer-events:none;
+  background: radial-gradient(
+    600px 200px at top left,
+    rgba(99,102,241,0.06),
+    transparent 60%
+  );
+}
+
+/* Ensure stacking works */
+.card,
+.section-card,
+.project-card {
+  position:relative;
+}
