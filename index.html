@@ -98,61 +98,47 @@ title: Pallavi | Cybersecurity Portfolio
 
 <div class="wrap">
   <div class="hero">
-    <div class="card">
-      <h1 class="title">Pallavi</h1>
-      <p class="subtitle">
-        Cybersecurity graduate student focused on security monitoring, detection, and reporting.
-        I build hands-on projects using logs, SIEM queries, dashboards, and simple automation.
-      </p>
+  <div class="card hero-card">
+    <div class="hero-main">
+      <img class="avatar" src="{{ '/assets/img/DSC_2071.JPG' | relative_url }}" alt="Pallavi" />
 
-      <div class="chips">
-        <span class="chip">SIEM (Splunk)</span>
-        <span class="chip">Log Analysis</span>
-        <span class="chip">Detection</span>
-        <span class="chip">Cloud Security</span>
-        <span class="chip">Reporting</span>
-      </div>
+      <div>
+        <h1 class="title">Pallavi</h1>
+        <p class="subtitle">
+          Cybersecurity graduate student focused on SOC monitoring, detection engineering, and incident response.
+          I build SIEM + log-based projects (Splunk/ELK) with dashboards, alerts, and clear write-ups.
+        </p>
 
-      <div class="btns">
-        <a class="btn primary" href="/resume.pdf">Resume</a>
-        <a class="btn" href="https://github.com/SinghPallavi819" target="_blank" rel="noreferrer">GitHub</a>
-        <a class="btn" href="https://www.linkedin.com/" target="_blank" rel="noreferrer">LinkedIn</a>
-        <a class="btn" href="mailto:pallavisingh819@yahoo.com">Email</a>
-      </div>
-    </div>
+        <div class="chips">
+          <span class="chip">Splunk (Cloud & SPL)</span>
+          <span class="chip">ELK Stack</span>
+          <span class="chip">AWS Security</span>
+          <span class="chip">IR & Triage</span>
+          <span class="chip">Linux</span>
+        </div>
 
-    <div class="card">
-      <h2 style="margin:0 0 8px;font-size:18px;">What I’m looking for</h2>
-      <p class="muted">Internships in SOC, security operations, information security, and cloud security.</p>
-
-      <div class="section">
-        <h2>Highlights</h2>
-        <p class="muted">• Built Splunk detection + dashboard for SSH brute force attempts</p>
-        <p class="muted">• Create clear security visuals and short write-ups</p>
-        <p class="muted">• Comfortable with Linux and basic scripting</p>
+        <div class="btns">
+          <a class="btn primary" href="{{ '/resume.pdf' | relative_url }}">Resume</a>
+          <a class="btn" href="{{ '/#projects' | relative_url }}">Projects</a>
+          <a class="btn" href="https://github.com/SinghPallavi819" target="_blank" rel="noreferrer">GitHub</a>
+          <a class="btn" href="https://www.linkedin.com/" target="_blank" rel="noreferrer">LinkedIn</a>
+          <a class="btn" href="mailto:pallavisingh819@yahoo.com">Email</a>
+        </div>
       </div>
     </div>
   </div>
 
-  <div class="section">
-    <h2>Projects</h2>
-    <p class="muted">Click a project to see the detection logic, dashboard screenshots, and results.</p>
-<div class="grid">
-  {% for post in site.posts limit: 12 %}
-    <div class="proj">
-      <h3><a href="{{ post.url }}">{{ post.title }}</a></h3>
-      <p>{{ post.excerpt | strip_html | truncate: 120 }}</p>
-    </div>
-  {% endfor %}
+  <div class="card">
+    <h2 style="margin:0 0 8px;font-size:18px;">What I’m looking for</h2>
+    <p class="muted">SOC Analyst / Security Analyst Intern (monitoring, triage, dashboards, cloud security).</p>
 
-  {% if site.posts.size == 0 %}
-    <div class="proj">
-      <h3>No projects yet</h3>
-      <p>Add a post in _posts/ with a date like 2025-01-12-your-title.md</p>
+    <div class="section">
+      <h2>Highlights</h2>
+      <p class="muted">• Built detections + dashboards in Splunk Cloud</p>
+      <p class="muted">• SSH log monitoring in ELK (Kibana visualizations)</p>
+      <p class="muted">• AWS CloudTrail detection scripting (Python)</p>
     </div>
-  {% endif %}
+  </div>
 </div>
-    
-  </div>
 
 </div>
