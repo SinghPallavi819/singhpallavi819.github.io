@@ -19,7 +19,6 @@ This lab intentionally focuses on **visibility and investigation**, which is a c
 ## What is ELK and Why It’s Used
 
 The **ELK Stack** is commonly used in security operations to centralize and analyze logs:
-
 - **Elasticsearch** stores and indexes log data for fast searching
 - **Logstash** ingests and parses raw logs into structured events
 - **Kibana** provides search, visualization, and investigation capabilities
@@ -35,7 +34,6 @@ For SSH monitoring, ELK allows analysts to:
 ## Lab Environment
 
 ### Architecture
-
 - **macOS**
   - Hosted Elasticsearch and Kibana using Docker & Docker Compose
 - **Linux (Ubuntu)**
@@ -50,7 +48,6 @@ Linux SSH logs → Logstash → Elasticsearch → Kibana → Investigation
 ## Step-by-Step What I Built
 
 ### 1. Deployed Elasticsearch and Kibana on macOS (Docker)
-
 The ELK Stack was deployed locally on macOS using Docker Compose.
 Key components:
 - Elasticsearch exposed on port `9200`
@@ -60,7 +57,7 @@ Key components:
 - Confirmed containers were running
 - Verified Elasticsearch API accessibility
 
-📸 **Screenshot – Docker containers running (macOS)**  
+**Screenshot – Docker containers running (macOS)**  
 `/assets/images/docker_running.png`
 
 ---
@@ -81,7 +78,6 @@ These logs included:
 ---
 
 ### 3. Ingested Logs Using Logstash
-
 Logstash was configured on Linux to:
 - Read SSH authentication logs
 - Parse log messages
@@ -91,14 +87,12 @@ Logs were indexed using a **time-based index pattern**:
 ssh-auth-YYYY.MM.DD
 
 This enabled efficient searching and time-based analysis.
-
-📸 **Screenshot – Logstash pipeline running successfully**  
+**Screenshot – Logstash pipeline running successfully**  
 `/assets/images/logstash-running.png`
 
 ---
 
 ### 4. Verified Indexing in Elasticsearch
-
 After ingestion:
 - SSH logs appeared in Elasticsearch indices
 - Index health and document counts were validated
@@ -109,7 +103,6 @@ After ingestion:
 ---
 
 ### 5. Investigated Logs Using Kibana Discover
-
 Kibana Discover was used to investigate SSH activity by filtering for:
 "Failed password"
 
@@ -125,7 +118,6 @@ This allowed inspection of:
 ---
 
 ### 6. Timeline & Pattern Analysis
-
 Using Kibana’s timeline view, authentication failures were analyzed to:
 - Identify bursts of failed login attempts
 - Observe repeated failures from the same source
@@ -137,7 +129,6 @@ Using Kibana’s timeline view, authentication failures were analyzed to:
 ---
 
 ## Investigation Focus (SOC Perspective)
-
 This project mirrors how SOC analysts work when:
 - Alerts are not yet configured
 - Suspicious activity must be identified manually
@@ -151,7 +142,6 @@ Instead of automated rules, the focus was on:
 ---
 
 ## Tools & Technologies Used
-
 - Elasticsearch
 - Logstash
 - Kibana
@@ -162,7 +152,6 @@ Instead of automated rules, the focus was on:
 ---
 
 ## Key Learnings
-
 - Understood how SSH attacks appear in raw Linux logs
 - Gained hands-on experience building and troubleshooting an ELK pipeline
 - Learned how logs move from ingestion to investigation
@@ -172,7 +161,6 @@ Instead of automated rules, the focus was on:
 ---
 
 ## Notes on Data Privacy
-
 All screenshots used in this project:
 - Have IP addresses redacted
 - Have usernames anonymized
