@@ -1,11 +1,10 @@
 # Site
 name: 'Pallavi Portfolio'
-description: 'A collection of projects, blogs and other portfolio'
+description: 'A collection of projects.'
 logo: 'assets/images/logo.png'
 favicon: 'assets/images/favicon.ico'
 baseurl: 
 domain: 'https://singhpallavi819.github.io'
-disqus: 'demowebsite'
 email: 'pallavisingh819@yahoo.com'
   #mailchimp-list: 'https://wowthemes.us11.list-manage.com/subscribe/post?u=8aeb20a530e124561927d3bd8&amp;id=8c3d2d214b'
 
@@ -19,14 +18,6 @@ plugins:
   - jekyll-paginate
   - jekyll-seo-tag
   
-author:
-    pal:
-      name:           Pallavi
-      site:           singhpallavi819.github.io
-      avatar:         /assets/images/avatar1.jpg
-      bio:            "Hi, I am Pallavi. This website is where I collect all my projects and 
-      email:          singhpallavi819@yahoo.com
-
  
 # Defaults
 defaults:
