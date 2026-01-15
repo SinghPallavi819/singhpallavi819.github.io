@@ -96,7 +96,7 @@ This allowed inspection of:
 - Failed login attempts
 - Invalid user activity
 - Source patterns over time
-![Kibana Discover – Failed SSH Logins](/assets/images/kibana-failed-password.png)
+![Kibana Discover – Failed SSH Logins](/assets/images/kibana-falied-password.png)
 ---
 
 ### 6. Timeline & Pattern Analysis
