@@ -249,9 +249,9 @@ title: Pallavi | Cybersecurity Portfolio
     {% for post in site.posts %}
       {% if shown < 3 %}
         <a class="project-card" href="{{ post.url | relative_url }}">
-          <div class="project-image"></div>
-
-          <div class="project-body">
+           <div class="project-image"
+     style="background-image: url('{{ '/assets/images/' | append: post.image | relative_url }}');">
+</div>  <div class="project-body">
             <h3>{{ post.title }}</h3>
             <p>{{ post.excerpt | strip_html | truncate: 140 }}</p>
           </div>
@@ -263,9 +263,7 @@ title: Pallavi | Cybersecurity Portfolio
     <!-- COMING SOON PROJECTS (REAL, FROM RESUME / LINKEDIN) -->
 
     <div class="project-card">
-      <div class="project-image"
-     style="background-image: url('{{ '/assets/images/' | append: post.image | relative_url }}');">
-</div>
+      <div class="project-image"></div>
 
       <div class="project-body">
         <h3>Network Vulnerability Scanner (Python + Nmap)</h3>
