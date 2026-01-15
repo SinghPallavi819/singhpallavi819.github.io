@@ -4,7 +4,7 @@ title: "SSH Log Monitoring using ELK Stack (macOS + Linux Detection Lab)"
 categories: [projects]
 categorieslink: "/#projects"
 excerpt: "Built an end-to-end SSH log monitoring lab using Docker-based ELK on macOS and a Linux host generating authentication logs, focusing on SOC-style log investigation."
-image: ssh-elk-monitoring.png
+image: ssh-elk-monitoring-clean.png
 ---
 
 ## Overview
