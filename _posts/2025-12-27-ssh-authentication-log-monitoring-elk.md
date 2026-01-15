@@ -61,6 +61,7 @@ Key components:
 ### 2. Generated SSH Authentication Logs on Linux
 On the Ubuntu system, SSH authentication events were generated and written to:
 /var/log/auth.log
+
 These logs included:
 - Failed password attempts
 - Invalid user login attempts
