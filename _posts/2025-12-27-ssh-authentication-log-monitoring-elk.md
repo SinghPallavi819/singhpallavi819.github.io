@@ -54,6 +54,7 @@ Key components:
 **Verification:**
 - Confirmed containers were running
 - Verified Elasticsearch API accessibility
+  ![Docker ELK Stack Running](/assets/images/docker-running-img.png)
 
 ---
 
@@ -75,6 +76,7 @@ Logstash was configured on Linux to:
 Logs were indexed using a **time-based index pattern**:
 ssh-auth-YYYY.MM.DD
 This enabled efficient searching and time-based analysis.
+![Logstash Running](/assets/images/logstash-running-img.png) 
 
 ---
 
@@ -82,6 +84,8 @@ This enabled efficient searching and time-based analysis.
 After ingestion:
 - SSH logs appeared in Elasticsearch indices
 - Index health and document counts were validated
+
+![Kibana Running](/assets/images/kibana-index-pattern.png)
 
 ---
 
@@ -92,7 +96,7 @@ This allowed inspection of:
 - Failed login attempts
 - Invalid user activity
 - Source patterns over time
-
+![Kibana Discover – Failed SSH Logins](/assets/images/kibana-failed-password.png)
 ---
 
 ### 6. Timeline & Pattern Analysis
