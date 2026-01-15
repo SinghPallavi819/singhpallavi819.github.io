@@ -1,179 +1,310 @@
 ---
 layout: default
+title: Pallavi | Cybersecurity Portfolio
 ---
-{% assign author = site.authors[page.author] %}
-
-<div class="container">
-
-  <!-- ✅ Keep header block, but DO NOT center the whole page -->
-  <div class="jumbotron jumbotron-fluid mb-2 pl-0 pt-2 pb-2 bg-white position-relative">
-    <div class="h-100 tofront">
-
-      <!-- ✅ NORMAL row (no justify-content-center) -->
-      <div class="row">
-        <!-- ✅ Make headline area a normal readable width and left aligned -->
-        <div class="col-12 col-lg-10 pt-3 pb-3">
-
-          <p class="text-uppercase font-weight-bold mb-2">
-            <span class="catlist">
-              {% for category in page.categories %}
-                <a class="cat" href="{{ page.categorieslink | default: '/#projects' | relative_url }}">
-                  {{ page.categories | first | upcase }}
-                </a>
-                {% unless forloop.last %}<span class="sep">, </span>{% endunless %}
-              {% endfor %}
-            </span>
-          </p>
-
-          <!-- ✅ Title left aligned -->
-          <h1 class="display-4 mb-3 article-headline" style="text-align:left;">
-            {{ page.title }}
-          </h1>
-
-          <!-- ✅ Meta left aligned -->
-          <div class="d-flex align-items-center flex-wrap">
-            {% if author and author.avatar %}
-              <img class="rounded-circle" src="{{ site.baseurl }}/{{ author.avatar }}" alt="{{ author.name }}" width="52" />
-            {% endif %}
-
-            <small class="ml-3">
-              {% if author and author.name %}{{ author.name }}{% endif %}
-              {% if author and author.twitter %}
-                <span>
-                  <a target="_blank" href="{{ author.twitter }}" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a>
-                </span>
-              {% endif %}
-              <span class="text-muted d-block mt-1">
-                {{ page.date | date: '%b %d, %Y' }} · {% include meta-read-time.html %}
-              </span>
-            </small>
-          </div>
-
-        </div>
-      </div>
-
-    </div>
-  </div>
-</div>
-
-<!-- ✅ Main content area -->
-<div class="container-lg pt-3 pb-4">
-  <!-- ✅ NORMAL row (no centering) -->
-  <div class="row">
-
-    <!-- Share -->
-    <div class="col-lg-2 pr-4 mb-4 col-md-12">
-      <div class="sticky-top sticky-top-offset text-center">
-        <div class="text-muted">Share this</div>
-        <div class="share d-inline-block">
-          <!-- AddToAny BEGIN -->
-          <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
-            <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
-            <a class="a2a_button_facebook"></a>
-            <a class="a2a_button_twitter"></a>
-          </div>
-          <script async src="https://static.addtoany.com/menu/page.js"></script>
-          <!-- AddToAny END -->
-        </div>
-      </div>
-    </div>
-
-    <!-- ✅ Article column: readable + not centered floating -->
-    <div class="col-md-12 col-lg-8 offset-lg-1">
-
-      <!-- Article -->
-      <article class="article-post">
-        {{ content }}
-      </article>
-
-      <!-- Tags -->
-      <div class="mb-4">
-        <span class="taglist">
-          {% for tag in page.tags %}
-            <a class="sscroll btn btn-light btn-sm font-weight-bold" href="{{ site.baseurl }}/tags.html#{{ tag | downcase }}">
-              {{ tag | downcase }}
-            </a>
-          {% endfor %}
-        </span>
-      </div>
-
-      <!-- Mailchimp Subscribe Form -->
-      {% if site.mailchimp-list %}
-        <div class="border p-5 bg-lightblue">
-          <div class="row justify-content-between">
-            <div class="col-md-6 mb-2 mb-md-0">
-              <h5 class="font-weight-bold">Join Newsletter</h5>
-              Get the latest news right in your inbox. We never spam!
-            </div>
-            <div class="col-md-6">
-              <div class="row">
-                <form action="{{ site.mailchimp-list }}" method="post" name="mc-embedded-subscribe-form"
-                      class="wj-contact-form validate w-100" target="_blank" novalidate>
-                  <div class="mc-field-group">
-                    <input type="email" placeholder="Enter e-mail address" name="EMAIL"
-                           class="required email form-control w-100" id="mce-EMAIL" autocomplete="on" required>
-                    <button type="submit" value="Subscribe" name="subscribe"
-                            class="heart btn btn-success btn-block w-100 mt-2">
-                      Subscribe
-                    </button>
-                  </div>
-                </form>
-              </div>
-            </div>
-          </div>
-        </div>
-      {% endif %}
-
-      <!-- Comments -->
-      {% if page.comments != false %}
-        {% include comments.html %}
-      {% endif %}
-
-    </div>
-
-  </div>
-</div>
-
-<!-- Alertbar Prev/Next -->
-<div class="alertbar">
-  <div class="container">
-    <div class="row prevnextlinks small font-weight-bold">
-
-      {% if page.previous.url %}
-        <div class="col-md-6 rightborder pl-0">
-          <a class="text-dark" href="{{ site.baseurl }}{{ page.previous.url }}">
-            {% if page.previous.image %}
-              <img height="30px" class="mr-1" src="{{ site.baseurl }}/{{ page.previous.image }}">
-            {% endif %}
-            {{ page.previous.title }}
-          </a>
-        </div>
-      {% endif %}
-
-      {% if page.next.url %}
-        <div class="col-md-6 text-right pr-0">
-          <a class="text-dark" href="{{ site.baseurl }}{{ page.next.url }}">
-            {{ page.next.title }}
-            {% if page.next.image %}
-              <img height="30px" class="ml-1" src="{{ site.baseurl }}/{{ page.next.image }}">
-            {% endif %}
-          </a>
-        </div>
-      {% endif %}
-
-    </div>
-  </div>
-</div>
 
 <style>
-  .article-post{
-    text-align:left;
-    max-width:720px;
+  /* Page background */
+  body{
+    background: radial-gradient(900px 500px at 10% 10%, rgba(99,102,241,.20), transparent 60%),
+                radial-gradient(900px 500px at 90% 20%, rgba(34,197,94,.18), transparent 55%),
+                radial-gradient(900px 500px at 40% 90%, rgba(236,72,153,.16), transparent 55%),
+                linear-gradient(180deg, #fbfcff, #ffffff);
   }
-  .article-post img{
-    display:block;
-    max-width:100%;
+
+  /* Force page to be scrollable (in case theme locks scrolling) */
+  html, body{
     height:auto;
-    margin:24px 0;
+    min-height:100%;
+    overflow-y:auto;
+  }
+
+  .wrap{max-width:1040px;margin:0 auto;padding:44px 18px}
+
+  /* HERO LAYOUT */
+  .hero{
+    display:grid;
+    grid-template-columns: 1.6fr .9fr;
+    gap:24px;
+    align-items:stretch;
+  }
+  @media (max-width:900px){
+    .hero{grid-template-columns:1fr}
+  }
+
+  /* Cards */
+  .card{
+    border:1px solid rgba(255,255,255,.65);
+    border-radius:20px;
+    padding:20px;
+    background: rgba(255,255,255,.78);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 18px 60px rgba(17,24,39,.08);
+  }
+
+  /* Title with gradient */
+  .title{
+    font-size:36px;
+    line-height:1.1;
+    margin:0 0 6px;
+    background: linear-gradient(90deg,#111827,#4f46e5,#06b6d4);
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+  }
+
+  .subtitle{
+    margin:0 0 10px;
+    color:#4b5563;
+    font-size:15.5px;
+    max-width:60ch;
+  }
+
+  /* Chips */
+  .chips{
+    margin-top:10px;
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+  }
+  .chip{
+    display:inline-block;
+    border-radius:999px;
+    padding:7px 12px;
+    font-size:12px;
+    color:#111827;
+    border:1px solid rgba(17,24,39,.08);
+    background: rgba(255,255,255,.7);
+    margin:0;
+  }
+  .chip:nth-child(1){background:rgba(99,102,241,.12)}
+  .chip:nth-child(2){background:rgba(34,197,94,.12)}
+  .chip:nth-child(3){background:rgba(236,72,153,.12)}
+  .chip:nth-child(4){background:rgba(6,182,212,.12)}
+  .chip:nth-child(5){background:rgba(245,158,11,.14)}
+
+  /* Buttons */
+  .btns{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-top:14px;
+  }
+  .btn{
+    display:inline-block;
+    padding:10px 12px;
+    border-radius:14px;
+    border:1px solid rgba(17,24,39,.10);
+    text-decoration:none;
+    color:#111827;
+    background: rgba(255,255,255,.75);
+    transition: transform .08s ease, box-shadow .08s ease;
+  }
+  .btn:hover{
+    transform:translateY(-1px);
+    box-shadow:0 10px 22px rgba(17,24,39,.10);
+  }
+  .btn.primary{
+    color:#fff;
+    border:none;
+    background: linear-gradient(90deg,#4f46e5,#06b6d4);
+  }
+
+  /* Sections */
+  .section{margin-top:18px}
+  .section h2{margin:0 0 10px;font-size:18px;color:#111827}
+  .muted{color:#4b5563;font-size:14px;margin:0}
+
+  /* Anchor jump spacing (header won’t cover Projects title) */
+  #projects{scroll-margin-top:90px;}
+
+  /* RIGHT CARD IMAGE – FULL WIDTH, CLEAN */
+  .profile-top{
+    margin:-20px;
+    margin-bottom:16px;
+    overflow:hidden;
+    border-radius:20px 20px 0 0;
+  }
+  .profile-photo{
+    width:100%;
+    height:260px;
+    object-fit:cover;
+    display:block;
+    background:rgba(255,255,255,.6);
+  }
+
+  /* PROJECT CARDS (image top placeholder, content below) */
+  .projects-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:22px;
+    margin-top:16px;
+  }
+  @media (max-width:980px){
+    .projects-grid{grid-template-columns:repeat(2,1fr)}
+  }
+  @media (max-width:640px){
+    .projects-grid{grid-template-columns:1fr}
+  }
+
+  .project-card{
+    display: flex;
+    flex-direction: column;
+    border-radius:18px;
+    overflow: hidden;
+    background:#ffffff;
+    text-decoration: none;
+    color:#111827;
+    box-shadow:0 16px 40px rgba(17,24,39,.12);
+    transition:transform .12s ease, box-shadow .12s ease;
+  }
+  .project-card:hover{
+    transform:translateY(-4px);
+    box-shadow:0 26px 60px rgba(17,24,39,.18);
+  }
+
+  /* Top image space (empty now, you add images later) */
+  .project-image{
+  height: 180px;
+  background-size: cover;          /* big + fills card */
+  background-position: center 20%; 
+  background-repeat: no-repeat;
+}
+
+
+  /* Bottom content */
+  .project-body{
+    padding:16px 18px 18px;
+    background:#ffffff;
+  }
+  .project-body h3{
+    margin:0 0 6px;
+    font-size:17px;
+    line-height:1.25;
+  }
+  .project-body p{
+    margin:0;
+    font-size:14px;
+    line-height:1.5;
+    color:#4b5563;
+  }
+
+.project-card{ overflow:hidden; }
+
+  .footer{
+    margin-top:28px;
+    border-top:1px solid rgba(17,24,39,.08);
+    padding-top:16px;
+    color:#6b7280;
+    font-size:13px;
   }
 </style>
+
+<div class="wrap">
+
+  <div class="hero">
+
+    <!-- LEFT CARD -->
+    <div class="card hero-card">
+      <h1 class="title">Pallavi</h1>
+
+      <p class="subtitle">
+        Hi, I’m Pallavi. I’m passionate about cybersecurity and fascinated by how systems work, break, and can be protected. I enjoy learning through hands-on labs, projects, and real-world security challenges.
+      </p>
+
+      <div class="chips">
+  <span class="chip">SOC Monitoring</span>
+  <span class="chip">Alert Triage & IR</span>
+  <span class="chip">Zeek</span>
+  <span class="chip">Splunk (SPL)</span>
+  <span class="chip">AWS Security</span>
+</div>
+
+
+      <div class="btns">
+        <a class="btn primary" href="{{ '/PALLAVI_RESUME.pdf' | relative_url }}">Resume</a>
+        <a class="btn" href="{{ '/' | relative_url }}#projects">Projects</a>
+        <a class="btn" href="https://www.linkedin.com/in/pallavi-/" target="_blank" rel="noreferrer">LinkedIn</a>
+        <a class="btn" href="mailto:pallavisingh819@yahoo.com">Email</a>
+      </div>
+    </div>
+
+    <!-- RIGHT CARD -->
+    <div class="card">
+      <div class="profile-top">
+        <img class="profile-photo" src="{{ '/assets/images/DSC_2071.JPG' | relative_url }}" alt="Pallavi" />
+      </div>
+
+      <h2 style="margin:0 0 8px;font-size:18px;">What I’m looking for</h2>
+      <p class="muted">
+         SOC Analyst/Security Analyst Intern role, focused on monitoring, alert triage, dashboards, and cloud security.
+      </p>
+    </div>
+
+  </div>
+
+  <!-- PROJECTS SECTION -->
+<div class="section" id="projects">
+  <h2>Projects</h2>
+
+  <div class="projects-grid">
+
+    <!-- REAL PROJECTS (latest 3 posts) -->
+    {% assign shown = 0 %}
+    {% for post in site.posts %}
+      {% if shown < 3 %}
+        <a class="project-card" href="{{ post.url | relative_url }}">
+           <div class="project-image"
+             style="background-image: url('{{ '/assets/images/' | append: post.image | relative_url }}');">
+             
+             </div>
+
+          <div class="project-body">
+            <h3>{{ post.title }}</h3>
+            <p>{{ post.excerpt | strip_html | truncate: 140 }}</p>
+          </div>
+        </a>
+        {% assign shown = shown | plus: 1 %}
+      {% endif %}
+    {% endfor %}
+
+    <!-- COMING SOON PROJECTS (REAL, FROM RESUME / LINKEDIN) -->
+
+    <div class="project-card">
+      <div class="project-image"></div>
+
+      <div class="project-body">
+        <h3>Network Vulnerability Scanner (Python + Nmap)</h3>
+        <p>
+          Coming soon. Built a Python-based CLI tool using Nmap to identify
+          open ports and map findings to known CVEs for vulnerability awareness.
+        </p>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-image"></div>
+      <div class="project-body">
+        <h3>CloudTrail Threat Detection (AWS + Python)</h3>
+        <p>
+          Coming soon. Python script to analyze CloudTrail logs and detect
+          high-risk AWS API activity with alerting via email and Slack.
+        </p>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-image"></div>
+      <div class="project-body">
+        <h3>AWS S3 Security Audit Tool</h3>
+        <p>
+          Coming soon. Automated audit of S3 buckets to detect public access,
+          missing encryption, disabled versioning, and generate CSV reports.
+        </p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</div>
