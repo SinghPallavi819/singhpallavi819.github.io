@@ -1,8 +1,9 @@
 ---
 layout: post
 title: "CloudTrail Threat Detection (AWS + Python)"
-categories: [AWS, Cloud Security, Python, CloudTrail]
+categories: [Projects]
 ---
+
 ## Overview
 This project focuses on detecting high-risk AWS API activity by analyzing CloudTrail logs using Python.
 
