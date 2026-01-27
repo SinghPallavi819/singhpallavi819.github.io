@@ -278,7 +278,7 @@ title: Pallavi | Portfolio
     <h2>Projects</h2>
     <div class="projects-grid">
       <!-- REAL PROJECTS (latest 3 posts) -->
-      {% assign shown = 0 %} {% for post in site.posts %} {% if shown < 4 %}
+      {% assign shown = 0 %} {% for post in site.posts %} {% if shown < 5 %}
       <a class="project-card" href="{{ post.url | relative_url }}">
         <div
           class="project-image"
@@ -296,15 +296,6 @@ title: Pallavi | Portfolio
           class="project-image"
           style="background-image: url('{{ '/assets/images/coming-soon.png' | relative_url }}');"
         ></div>
-        <div class="project-body">
-          <h3>Network Vulnerability Scanner (Python + Nmap)</h3>
-          <p>
-            Coming soon. Built a Python-based CLI tool using Nmap to identify
-            open ports and map findings to known CVEs for vulnerability
-            awareness.
-          </p>
-        </div>
-      </div>
       <div class="project-card">
         <div
           class="project-image"
