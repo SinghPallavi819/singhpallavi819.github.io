@@ -2,6 +2,7 @@
 layout: post
 title: "CloudTrail Threat Detection (AWS + Python)"
 categories: [Projects]
+excerpt: "Simulated cloud SOC alert triage by analyzing AWS CloudTrail logs to detect and validate high-risk API activity."
 ---
 
 ## Overview
