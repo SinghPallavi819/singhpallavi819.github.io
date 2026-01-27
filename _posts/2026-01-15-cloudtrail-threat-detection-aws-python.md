@@ -26,6 +26,7 @@ The script parses CloudTrail logs and flags **high-risk API actions**, including
 - `AttachUserPolicy`
 - `PutBucketPolicy`
 - `StopLogging`
+  ![CloudTrail CreateUser Event](/assets/images/cloudtrail-createuser.png)
 
 Each event is evaluated based on:
 - API action type
