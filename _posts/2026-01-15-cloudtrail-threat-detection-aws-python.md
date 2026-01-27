@@ -3,82 +3,45 @@ layout: post
 title: "CloudTrail Threat Detection (AWS + Python)"
 categories: [AWS, Cloud Security, Python, CloudTrail]
 ---
-
 ## Overview
-This project detects suspicious AWS activity by analyzing **CloudTrail logs** and flagging **high-risk API actions**.  
-It also sends a **Slack alert** when a high-risk event is found.
+This project focuses on detecting high-risk AWS API activity by analyzing CloudTrail logs using Python.
 
-## Goal
-- Collect CloudTrail management events in AWS
-- Parse CloudTrail JSON logs with Python
-- Detect high-risk actions (example: **CreateUser**)
-- Export findings to a CSV report
-- Send Slack notification for detected high-risk events
+The goal was to simulate how a SOC analyst or cloud security engineer can identify suspicious or sensitive actions performed in an AWS account.
 
-## Lab Setup / Data Source
-- Created a **CloudTrail trail** (management events enabled)
-- CloudTrail logs stored in an **S3 bucket**
-- Generated test activity in AWS (example: creating IAM users)
-- Downloaded/used CloudTrail JSON log files for analysis
+## Data Source
+- AWS CloudTrail management event logs (JSON format)
+- Logs collected from a multi-region CloudTrail trail stored in S3
 
 ## Tools Used
 - AWS CloudTrail
-- Amazon S3
-- AWS IAM
-- Python 3
-- Slack Incoming Webhook
+- Python
+- Slack Incoming Webhooks
+- CSV reporting
 
 ## Detection Logic
-The script extracts key fields from each CloudTrail record:
-- `eventTime`
-- `eventSource`
-- `eventName`
-- `readOnly`
-- `userIdentity.type` (ex: Root / IAMUser / AssumedRole / AWSService)
-- `userArn`
-- `sourceIPAddress`
+The script parses CloudTrail logs and flags **high-risk API actions**, including:
+- `CreateUser`
+- `AttachUserPolicy`
+- `PutBucketPolicy`
+- `StopLogging`
 
-Then it flags **high-risk events** based on `eventName`.
+Each event is evaluated based on:
+- API action type
+- Read-only vs write operation
+- User identity (Root, IAM User, Assumed Role)
+- Source IP address
 
-**Example high-risk event detected in my logs:**
-- `iam.amazonaws.com : CreateUser`
+## Alerting & Output
+- High-risk events are written to a CSV report
+- Slack alerts are triggered automatically when risky activity is detected
+- Alerts include event name, user, source IP, and timestamp
 
-## Output / Evidence
-- Console summary: total events loaded + high-risk count
-- CSV report generated: **high_risk_events.csv**
-- Slack alert sent when high-risk events are found
-
-## Results
-I successfully:
-- Collected CloudTrail logs in S3
-- Parsed real CloudTrail JSON logs with Python
-- Detected an IAM **CreateUser** event as high-risk
-- Exported the alert evidence to a CSV report
-- Triggered Slack alerting for detected high-risk activity
+## Example Finding
+A `CreateUser` event initiated by the root account was detected and flagged as high risk, demonstrating the effectiveness of the detection logic.
 
 ## What I Learned
-- How CloudTrail logs AWS API activity and identity context
-- How to parse and analyze Cloud logs using Python
-- How to build a simple detection + alert pipeline
-- How to create audit evidence (CSV) for security investigations
+- How CloudTrail logs AWS API activity at a granular level
+- How to parse and analyze JSON security logs using Python
+- How to build basic cloud threat detection logic
+- How alerting integrations (Slack) fit into real-world SOC workflows
 
----
-
-## Screenshots (add yours here)
-**1) CloudTrail trail created + logging enabled**  
-*<insert screenshot>*
-
-**2) S3 bucket storing CloudTrail logs**  
-*<insert screenshot>*
-
-**3) CloudTrail event showing CreateUser / AttachUserPolicy**  
-*<insert screenshot>*
-
-**4) Script output showing events loaded + high-risk flagged**  
-*<insert screenshot>*
-
-**5) CSV report opened (high_risk_events.csv)**  
-*<insert screenshot>*
-
-**6) Slack alert message screenshot**  
-*<insert screenshot>*
