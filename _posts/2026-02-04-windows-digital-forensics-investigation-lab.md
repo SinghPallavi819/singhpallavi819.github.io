@@ -40,17 +40,7 @@ The Azure VM served as a controlled environment where activity could be generate
 
 ## Evidence Collection
 
-Forensic artifacts were collected directly from the Windows system and copied into a separate **Evidence directory** before analysis. This follows standard forensic practice where investigators avoid working on original system files.
-
-Artifacts were extracted from their default locations and stored in the following structure:
-
-
-DFIR-Lab
-├ Evidence
-│ ├ Prefetch
-│ ├ Registry
-│ └ EventLogs
-
+Forensic artifacts were collected directly from the Windows system and copied into a separate **Evidence directory** before analysis. This follows standard forensic practice, in which investigators avoid working on original system files.
 
 ---
 
@@ -76,11 +66,9 @@ The artifacts analyzed in this lab were selected because they commonly appear in
 C:\Windows\AppCompat\Programs\Amcache.hve
 
 **Purpose**
-
-Amcache records metadata about applications that have been executed or existed on the system.
+Amcache records metadata about applications that have been executed or exist on the system.
 
 **Evidence Extracted**
-
 - Executed program paths  
 - File metadata  
 - Application installation traces  
@@ -96,11 +84,9 @@ Amcache is useful for confirming that a program existed on a system and may have
 Stored in the **SYSTEM registry hive**
 
 **Purpose**
-
 ShimCache stores historical references to executed applications as part of Windows compatibility mechanisms.
 
 **Evidence Extracted**
-
 - Program execution traces  
 - Application file paths  
 
@@ -115,23 +101,18 @@ ShimCache helps investigators identify applications that were previously execute
 C:\Windows\Prefetch
 
 **Purpose**
-
 Prefetch files record information about recently executed programs in order to improve system performance.
-
 In digital forensics, Prefetch artifacts provide strong evidence that an application was executed.
 
 **Analysis Tool**
-
 PECmd
 
 **Evidence Extracted**
-
 - Program execution timestamps  
 - Execution frequency  
 - Files accessed during execution  
 
 Example findings included execution activity for applications such as:
-
 - Notepad  
 - Microsoft Edge  
 - Windows Terminal  
@@ -148,15 +129,12 @@ NTUSER.DAT
 Software\Microsoft\Windows\CurrentVersion\Explorer\UserAssist
 
 **Purpose**
-
 UserAssist records applications launched through the Windows graphical user interface.
 
 **Analysis Tool**
-
 Registry Explorer
 
 **Evidence Extracted**
-
 - Program launch history  
 - Run counts  
 - Last execution timestamps  
@@ -172,17 +150,13 @@ UserAssist provides insight into **user-driven application activity** within the
 C:\Windows\System32\winevt\Logs
 
 **Log Analyzed**
-
 Security.evtx
 
 **Analysis Tool**
-
 EvtxECmd
-
 The Security log records authentication and security-related events on the system.
 
 **Results**
-
 - Parsed **3,696 security events**  
 - Extracted authentication activity and system event timelines  
 
@@ -201,23 +175,21 @@ These logs help investigators build a timeline of system activity and detect sus
 
 ## Challenges Encountered
 
-### Prefetch folder initially empty
+### Prefetch artifacts not present on the VM
 
-When the Prefetch directory was first accessed, no Prefetch files were present. This occurred because Windows only generates Prefetch files **after applications have been executed**.
+When examining the system, the `C:\Windows\Prefetch` directory did not contain usable Prefetch artifacts for analysis. Since Prefetch files are generated based on program execution and system activity, the VM did not provide sufficient artifact data for meaningful investigation.
 
-After running several applications within the VM (such as Notepad, Microsoft Edge, and Windows Terminal), Prefetch files were generated and became available for analysis.
+To continue practicing Prefetch analysis, I obtained **sample Prefetch artifacts from Eric Zimmerman’s DFIR datasets on GitHub**. These artifacts were placed into the `Evidence/Prefetch` directory and parsed using PECmd.
+
+Using publicly available forensic datasets is common in DFIR training and allows investigators to practice analyzing artifacts even when real evidence is not available.
 
 ### Tool execution path issues
 
 While parsing Windows Event Logs using EvtxECmd, PowerShell initially returned an error indicating that the command could not be recognized. This occurred because the tool was executed from the wrong directory.
 
-After navigating to the correct folder and executing the command with:
-
-
+After navigating to the correct folder and executing the command using:
 .\EvtxECmd.exe
-
-
-the logs were successfully parsed.
+The logs were successfully parsed and exported.
 
 ### Artifact access permissions
 
