@@ -1,30 +1,28 @@
 # Pallavi's Portfolio
 
 This repository hosts my personal cybersecurity portfolio and project work.
-It focuses on security monitoring, detection, and reporting using real-world
-security tools and logs.
+It focuses on security monitoring, detection, log analysis, and incident
+investigation using real-world security tools and system logs.
 
 ## Areas of Focus
+- Digital Forensics Concepts
+- Cloud Security Monitoring
 - Security Operations and Monitoring
 - SIEM Detection and Alerting
 - Log Analysis and Threat Identification
-- Cloud Security Monitoring
+- Incident Investigation
 - Security Reporting and Documentation
 
 ## Tools and Technologies
 - Splunk (Cloud), SPL
 - ELK Stack (Elasticsearch, Logstash, Kibana)
 - AWS (CloudTrail, IAM)
+- Microsoft Azure
+- Eric Zimmerman Tools (Registry Explorer, Timeline Explorer, PECmd)
+- Windows Event Log Analysis
 - Python
 - Linux
-
-## Projects
-- Brute Force Attack Detection using Splunk
-- SSH Log Monitoring and Analysis using ELK Stack
-- AWS CloudTrail Threat Detection using Python
-
-Each project includes detection logic, dashboards or outputs, and clear
-documentation explaining how the solution works.
+- Windows
 
 ## Portfolio Website
 View my live portfolio here:
