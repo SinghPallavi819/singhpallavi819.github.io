@@ -66,6 +66,7 @@ The artifacts analyzed in this lab were selected because they commonly appear in
 C:\Windows\AppCompat\Programs\Amcache.hve
 
 **Purpose**
+
 Amcache records metadata about applications that have been executed or exist on the system.
 
 **Evidence Extracted**
@@ -84,6 +85,7 @@ Amcache is useful for confirming that a program existed on a system and may have
 Stored in the **SYSTEM registry hive**
 
 **Purpose**
+
 ShimCache stores historical references to executed applications as part of Windows compatibility mechanisms.
 
 **Evidence Extracted**
@@ -101,10 +103,12 @@ ShimCache helps investigators identify applications that were previously execute
 C:\Windows\Prefetch
 
 **Purpose**
+
 Prefetch files record information about recently executed programs in order to improve system performance.
 In digital forensics, Prefetch artifacts provide strong evidence that an application was executed.
 
 **Analysis Tool**
+
 PECmd
 
 **Evidence Extracted**
@@ -129,9 +133,11 @@ NTUSER.DAT
 Software\Microsoft\Windows\CurrentVersion\Explorer\UserAssist
 
 **Purpose**
+
 UserAssist records applications launched through the Windows graphical user interface.
 
 **Analysis Tool**
+
 Registry Explorer
 
 **Evidence Extracted**
@@ -150,10 +156,13 @@ UserAssist provides insight into **user-driven application activity** within the
 C:\Windows\System32\winevt\Logs
 
 **Log Analyzed**
+
 Security.evtx
 
 **Analysis Tool**
+
 EvtxECmd
+
 The Security log records authentication and security-related events on the system.
 
 **Results**
@@ -189,6 +198,7 @@ While parsing Windows Event Logs using EvtxECmd, PowerShell initially returned a
 
 After navigating to the correct folder and executing the command using:
 .\EvtxECmd.exe
+
 The logs were successfully parsed and exported.
 
 ### Artifact access permissions
