@@ -288,7 +288,7 @@ title: Pallavi | Portfolio
     <h2>Projects</h2>
     <div class="projects-grid">
       <!-- REAL PROJECTS (latest 3 posts) -->
-      {% assign shown = 0 %} {% for post in site.posts %} {% if shown < 5 %}
+      {% assign shown = 0 %} {% for post in site.posts %} {% if shown < 6 %}
       <a class="project-card" href="{{ post.url | relative_url }}">
         <div
           class="project-image"
@@ -301,26 +301,6 @@ title: Pallavi | Portfolio
       </a>
       {% assign shown = shown | plus: 1 %} {% endif %} {% endfor %}
       <!-- COMING SOON PROJECTS (REAL, FROM RESUME / LINKEDIN) -->
-      <div class="project-card">
-        <div
-          class="project-image"
-          style="background-image: url('{{ '/assets/images/coming-soon.png' | relative_url }}');"
-        ></div>
-        <div class="project-body">
-          <h3>AWS S3 Security Audit Tool</h3>
-          <p>
-            Coming soon. Automated audit of S3 buckets to detect public access,
-            missing encryption, disabled versioning, and generate CSV reports.
-          </p>
-        </div>
-      </div>
     </div>
-    <div class="projects-banner">
-  <strong>
-    Note: The <em>Coming Soon</em> projects are already implemented.
-    I am currently organizing documentation and sanitizing data before publishing them here.
-    This section is actively being updated.
-  </strong>
-</div>
   </div>
 </div>
