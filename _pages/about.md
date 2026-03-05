@@ -12,7 +12,7 @@ permalink: /about/
       I am a cybersecurity graduate student interested in digital forensics, incident investigation, and security analysis. I enjoy understanding how attacks happen, how they are detected, and how evidence from systems and networks can be used to reconstruct security incidents.</p>
 
 <p class="hero-subtitle">
-  My learning journey started with security monitoring and SOC-style projects, where I built hands-on environments to analyze logs, create detection rules, and investigate suspicious activity. Through this work, I became interested in the deeper investigation side of cybersecurity — understanding what actually happened during an attack and how different artifacts help reconstruct the full story.</p>
+  My learning journey started with security monitoring and SOC-style projects, where I built hands-on environments to analyze logs, create detection rules, and investigate suspicious activity. Through this work, I became interested in the deeper investigation side of cybersecurity, understanding what actually happened during an attack and how different artifacts help reconstruct the full story.</p>
 
 <p class="hero-subtitle">
   I am now expanding my focus into digital forensics and incident investigation, where I analyze logs, system artifacts, and network activity to better understand attacker behavior and incident timelines.</p>
