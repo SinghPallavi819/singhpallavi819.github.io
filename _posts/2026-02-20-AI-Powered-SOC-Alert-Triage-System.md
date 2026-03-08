@@ -75,7 +75,7 @@ By automatically adding severity classification and generating concise summaries
 ---
 
 ## AI Investigation Guidance
-
+![AI Prompt Preview](/assets/images/AI-Prompt.png)
 ![AI Investigation Analysis](/assets/images/ai-alert-triage-analysis.png)
 
 After enrichment and triage, the alert data is converted into a structured prompt that is analyzed by a local language model.
