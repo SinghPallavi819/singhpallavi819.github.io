@@ -122,4 +122,8 @@ These additions would allow the pipeline to more closely resemble real-world det
 
 ---
 
-## Repository Structure
+---
+
+## Conclusion
+
+This project demonstrates a prototype for AI-assisted alert triage in a Security Operations Center environment. By combining alert enrichment, rule-based prioritization, and AI-generated investigation guidance, the system explores how automation can help analysts process alerts more efficiently and focus on meaningful security investigations.
