@@ -4,7 +4,7 @@ title: "AI-Powered SOC Alert Triage System"
 categories: [projects]
 categorieslink: "/#projects"
 excerpt: "AI-powered SOC alert triage pipeline built in Python that enriches simulated SIEM alerts, applies rule-based severity classification, and uses a local LLM to generate investigation summaries and analyst guidance."
-image: ai-alert-triage-architecture.png
+image: ai-soc.png
 ---
 
 ## Overview
