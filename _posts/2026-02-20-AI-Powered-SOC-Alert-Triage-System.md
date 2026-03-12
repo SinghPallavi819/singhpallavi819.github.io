@@ -96,7 +96,7 @@ This enrichment provides important investigation context that SOC analysts typic
 
 ## Alert Processing
 
-![Alert Processing Output](/assets/images/ai-alert-triage-output.png)
+![Alert Processing Output](/assets/images/AI-analysys.png)
 
 During processing, each alert is enriched with contextual information and classified based on its characteristics.
 
@@ -112,8 +112,8 @@ This stage simulates how SOC automation pipelines prioritize alerts before they 
 
 ## AI Investigation Guidance
 
-![AI Prompt Preview](/assets/images/AI-Prompt.png)
-![AI Investigation Analysis](/assets/images/ai-alert-triage-analysis.png)
+![AI Prompt Preview](/assets/images/alert-loaded.png)
+![AI Investigation Analysis](/assets/images/ai-analysis.png)
 
 After enrichment and triage, the alert data is converted into a structured prompt analyzed by a local language model.
 
