@@ -99,7 +99,7 @@ GET /api/Users
 
 ### Burp Request to API Endpoint
 
-![API Request](/assets/images/api-request.png)
+![API Request](/assets/images/whoami-request.png)
 
 ### Sensitive API Response
 
