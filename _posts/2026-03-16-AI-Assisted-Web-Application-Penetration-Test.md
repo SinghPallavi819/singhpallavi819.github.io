@@ -45,7 +45,7 @@ http://localhost:3000
 
 ### Burp Intercepting Login Request
 
-![Burp Intercept Login](/assets/images/projects/ai-pentest/burp-login-intercept.png)
+![Burp Intercept Login](/assets/images/burp-login-intercept.png)
 
 Intercepting requests allows inspection and modification of HTTP traffic before it reaches the server.
 
@@ -66,11 +66,11 @@ The following SQL injection payload was used:
 
 ### SQL Injection Payload in Burp
 
-![SQL Injection Request](/assets/images/projects/ai-pentest/sql-injection-request.png)
+![SQL Injection Request](/assets/images/sql-injection-request.png)
 
 ### Successful Login Response
 
-![Login Response](/assets/images/projects/ai-pentest/login-response.png)
+![Login Response](/assets/images/login-response.png)
 
 ---
 
@@ -82,7 +82,7 @@ This token could be reused to access protected API endpoints.
 
 ### JWT Token in Response
 
-![JWT Token Response](/assets/images/projects/ai-pentest/jwt-token-response.png)
+![JWT Token Response](/assets/images/jwt-token-response.png)
 
 ---
 
@@ -99,11 +99,11 @@ GET /api/Users
 
 ### Burp Request to API Endpoint
 
-![API Request](/assets/images/projects/ai-pentest/api-request.png)
+![API Request](/assets/images/api-request.png)
 
 ### Sensitive API Response
 
-![API Users Response](/assets/images/projects/ai-pentest/api-users-response.png)
+![API Users Response](/assets/images/api-users-response.png)
 
 The response exposed:
 
@@ -158,7 +158,7 @@ The model analyzes the HTTP traffic and generates structured vulnerability analy
 
 ### AI Assistant Output
 
-![AI Analysis Output](/assets/images/projects/ai-pentest/ai-output.png)
+![AI Analysis Output](/assets/images/ai-output.png)
 
 The analysis includes:
 
@@ -176,7 +176,7 @@ The assistant automatically generates a Markdown pentest report summarizing all 
 
 ### Generated Pentest Report
 
-![Pentest Report](/assets/images/projects/ai-pentest/pentest-report.png)
+![Pentest Report](/assets/images/pentest-report.png)
 
 The generated report contains:
 
