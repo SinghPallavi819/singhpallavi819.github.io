@@ -35,13 +35,10 @@ The project demonstrates how analysts can:
 
 ## Environment Setup
 
-The vulnerable application used for testing was **OWASP Juice Shop**.
-
-The application was deployed locally using Docker.
-
-docker run -d -p 3000:3000 bkimminich/juice-shop
-
-The application becomes available at:
+- The vulnerable application used for testing was **OWASP Juice Shop**.
+- The application was deployed locally using Docker.
+- docker run -d -p 3000:3000 bkimminich/juice-shop
+- The application becomes available at:
 http://localhost:3000
 
 ---
@@ -114,7 +111,7 @@ The response exposed:
 - user roles
 - internal user metadata
 
-This represents a **sensitive data exposure vulnerability.
+This represents a sensitive data exposure vulnerability.
 
 ---
 
@@ -150,7 +147,7 @@ python3 ai_pentest_assistant.py
 ```
 ---
 
-# Block 11 — AI Output
+# AI Output
 
 
 ---
@@ -170,6 +167,7 @@ The analysis includes:
 - attack evidence
 - recommended testing steps
 - remediation guidance
+  
 ---
 
 ## Generated Pentest Report
@@ -201,6 +199,7 @@ This project demonstrates several offensive security and automation concepts:
 - vulnerability analysis
 - AI-assisted security tooling
 - automated pentest reporting
+  
 ---
 
 ## Key Takeaway
