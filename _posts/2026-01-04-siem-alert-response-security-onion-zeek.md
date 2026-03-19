@@ -1,11 +1,4 @@
----
-layout: post
-title: "SIEM Alert Response Simulation using Security Onion and Zeek"
-categories: [projects]
-categorieslink: "/#projects"
-excerpt: "Simulated SOC alert triage by correlating SIEM alerts with Zeek network logs to validate suspicious activity."
-image: siem-securityonion-zeek-clean.png
----
+
 
 ## Overview
 This project simulates a real-world SOC alert response workflow using Security Onion. The focus is on triaging a security alert, validating it using network telemetry, and documenting the findings as part of an incident response process.
