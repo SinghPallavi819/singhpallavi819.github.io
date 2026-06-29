@@ -1,0 +1,84 @@
+Here's your complete, final pitch — full script start to finish, GitHub-only, with screen-movement cues built in.
+
+---
+
+## Opening
+
+"Hi everyone, I'm Pallavi, an Application Security Engineer Intern on the AppSec team under Prashant. Today I'll walk through four things: the app I built as a security testing sandbox, how I connected it to Semgrep through GitHub, a few real findings with what they mean and how they're fixed, and a quick update on our Microsoft Defender Secure Score."
+
+---
+
+## 1. Building the app
+
+"I built a Toyota dealership inventory app from scratch specifically to have a realistic codebase to test our security tools against.
+
+- **Frontend**: built in React, which is JavaScript — hosted on AWS Amplify. This is what customers and dealers actually see and click through in the browser.
+- **Backend**: fully serverless on AWS. API Gateway receives requests, Python functions running on AWS Lambda handle the logic, and everything reads and writes to a DynamoDB database.
+
+There's no server sitting around to patch or maintain — code only runs when someone hits an endpoint. That made it a clean, realistic target to run security scanning against, rather than testing on a toy example."
+
+*(Screen: have the Amplify-hosted frontend open and ready to click through if anyone wants a visual.)*
+
+---
+
+## 2. Connecting GitHub to Semgrep
+
+"Semgrep is a tool that automatically scans code and flags security issues before they reach production — things like risky code patterns or outdated third-party packages with known vulnerabilities.
+
+Setting it up was a quick, guided process:
+1. I signed into Semgrep.
+2. From the Projects page, I clicked 'Scan new project.'
+3. I selected GitHub as the source.
+4. I did a one-time authorization, similar to logging into any app with your GitHub account.
+5. I picked the specific repo to scan — first DVWA, our intentionally vulnerable test app, then separately my dealership app.
+6. Semgrep pulled in the code and ran its full security checks automatically.
+
+Once that connection is made, Semgrep keeps watching that code going forward — every finding I'm about to show came out of that same one-time setup."
+
+*(Screen move: open Semgrep's Projects page, click into "Scan new project" so the source options are visible, then click into one of your connected GitHub repos to show it sitting there with scan history. This shows the connection without redoing the live authorization.)*
+
+---
+
+## 3. Finding one — SQL injection (DVWA, via GitHub)
+
+*(Screen move: open the finding — `laravel-native-sql-injection`, ID 843313342.)*
+
+"Point to the title: This is a finding from Semgrep on DVWA, our test app.
+
+Point to 'Critical severity' and 'Medium confidence': These are two different things. Severity tells you how bad it would be if this were real — SQL injection is always rated seriously because it can expose an entire database. Confidence tells you how sure the tool is that this exact spot is actually exploitable. Medium confidence means it's not fully certain, which is exactly why it's flagged the way it is below.
+
+Point to the green 'Likely false positive' box: This is the tool's own AI double-checking itself. Before this piece of user input ever reaches the database, the code forces it to become a plain number — so there's nothing left for an attacker to manipulate. It does add a note that the logic around this code should still be reviewed separately, just to be safe.
+
+Point to the Finding description text: Even though it called this a likely false positive, it still wrote out exactly how an attack could happen in theory, step by step. That's useful for a developer because it shows the risk pattern clearly, even on code that happens to be safe right now — so they don't repeat that pattern elsewhere.
+
+Point to the code panel, Line 19 'Source' and Line 23 'Sink': This shows the journey of the data — Line 19 is where the user's input first enters the program, Line 23 is where it finally gets used in the database command. The tool traces that whole path automatically."
+
+**Remediation (technical)**: "Replace the string-interpolated query with a prepared statement using bound parameters — in PHP, that's PDO with `bindParam()`, or alternatively adopt an ORM layer so user input is always passed as a bound value rather than concatenated into the SQL string. That removes the injection vector regardless of whether the input happens to be pre-validated upstream."
+
+---
+
+## 4. Finding two — supply chain (my dealership app, via GitHub)
+
+*(Screen move: open the `serialize-javascript` supply chain finding.)*
+
+"Point to the title: This finding isn't about code I wrote — it's about an outside package my app relies on. We don't write every part of an app ourselves; we use existing building blocks made by other developers, and this one has a known flaw.
+
+Point to 'Medium severity': Not critical — it could slow things down under certain conditions, but it's not a doorway into stealing data.
+
+Point to 'Reachability unknown': The tool is being honest about a limit here — it hasn't confirmed whether my app actually uses the risky part of this package. It's flagging it because it could be a problem, not because it's proven to be one.
+
+Point to 'EPSS: 0.5% (Low)': This is a public, real-world score estimating how likely this exact flaw is to actually be exploited in the wild — under 1% is very low."
+
+**Remediation (technical)**: "Upgrade `serialize-javascript` from version 6.0.2 to 7.0.5, the patched release Semgrep identifies directly in the finding — a dependency version bump in `package-lock.json`, no code changes required."
+
+---
+
+## 5. Microsoft Defender Secure Score
+
+"Separately, I also worked on improving our Microsoft Defender Secure Score — identifying security misconfigurations across the environment and remediating them using Defender and Intune. That work moved our score from **62.89 up to 64.78**, a direct, measurable improvement from closing those gaps."
+
+---
+
+## Closing
+
+"So across what I've shown today, you can see the range of what application security work actually looks like day to day: tracing a real attack pattern even when it turns out to be safe, managing third-party dependency risk, and tightening our security posture on the infrastructure side. Happy to take any questions."
