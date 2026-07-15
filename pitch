@@ -1,121 +1,99 @@
-Here's the cleaned report — only confirmed findings:
-
----
-
-**Microsoft Edge Enterprise Management (EPM) — Evaluation Report**
-*Evaluated by: Pallavi | Date: July 2026*
+Microsoft Edge Enterprise Management (EPM) — Evaluation Report
+Evaluated by: Pallavi | Date: July 2026
 
 EPM was evaluated against our organisation's browser and password management requirements using a hands-on approach in the company's live environment with global admin and Edge admin access.
 
----
+EPM Feature Assessment
 
-**EPM Feature Assessment**
+Feature, Status, Notes
+Password Storage and Autofill, Tested, Saves and autofills passwords
+Password Monitor, Tested, Detects leaked reused and weak passwords
+Azure AD SSO, Tested, Sign-in on Microsoft and non-Microsoft apps
+Extension Monitoring, Tested, 30 extensions visible with user counts
+Secure Password Deployment, Testing in Progress, Policy deployed autofill verification pending
+Password Age Tracking, Not Available, EPM does not show password age
+90-Day Expiry Alerts, Not Available, No built-in notification in EPM
+Chrome Password Management, Not Available, Chrome passwords outside EPM control
 
-| Feature | Status | Notes |
-|---|---|---|
-| Password Storage & Autofill | ✅ Confirmed | Saves and autofills passwords |
-| Password Monitor | ✅ Confirmed | Detects leaked, reused and weak passwords |
-| Azure AD SSO | ✅ Confirmed | Auto sign-in on Microsoft and non-Microsoft apps |
-| Extension Monitoring | ✅ Confirmed | 30 extensions visible with user counts |
-| Secure Password Deployment | ⏳ In Testing | Policy deployed, autofill verification pending |
-| Password Age Tracking | ❌ Not Available | EPM does not show password age |
-| 90-Day Expiry Alerts | ❌ Not Available | No built-in notification in EPM |
-| Chrome Password Management | ❌ Not Available | Chrome passwords outside EPM control |
+Feature Details
 
----
+1. Password Storage and Autofill
 
-**Feature Details & Q&A**
+Passwords sync across all devices where user is signed into Edge with their work account
+Export available as CSV, device authentication required before export
+Passwords can be imported from Chrome or any browser via CSV
+Chrome passwords can be moved to Edge so they are managed and monitored by IT
 
-**1. Password Storage & Autofill** ✅
+2. Password Monitor
 
-Password Manager saves credentials when a user logs into any website and automatically fills them in on return visits.
+Scans saved passwords for three risks, leaked, reused and weak
+Shows exactly which sites are affected
+Direct Change button takes user to that site's password change page
+No email notification, alert appears inside Edge settings only
+Admin can enforce this feature via policy, users cannot turn it off
 
-**Q: Do passwords sync across all devices?**
-A: Yes — sync is enabled. Any device where the user signs into Edge with their work account gets all saved passwords.
+3. Azure AD Single Sign-On (SSO)
 
-**Q: Can passwords be exported as a backup?**
-A: Yes — passwords can be exported as a CSV file. Device authentication is required before export.
+Users sign in once with their work account and access all apps automatically, no repeated logins
+Tested on portal.office.com, signed in automatically without credentials
+Tested on non-Microsoft apps, JIRA, Confluence and Bitbucket all signed in via work account
+MFA verified once for JIRA, Confluence and Bitbucket signed in automatically in the same session
 
-**Q: Can existing passwords be imported from other browsers?**
-A: Yes — passwords from Chrome or any browser can be imported via CSV directly into Edge.
+4. Extension Monitoring
 
-**Q: Can passwords be migrated from Chrome to Edge?**
-A: Yes — export from Chrome, import into Edge. Once migrated, all passwords come under EPM control.
+Gives IT visibility into all browser extensions installed across company devices
+30 extensions found installed across the organisation
+Shows how many users have each extension
+Individual user details not visible, only total user count per extension
+Risk level of extensions not shown
 
----
+5. Secure Password Deployment
 
-**2. Password Monitor** ✅
+Policy deployed and received by Edge, autofill testing pending
 
-Password Monitor checks all saved passwords for security risks — leaked, reused and weak passwords.
+Observations
 
-**Q: What does Password Monitor check?**
-A: Three things — leaked passwords found in known data breaches, reused passwords used across multiple sites, and weak passwords that are easy to guess.
+Usability
 
-**Q: Was this tested?**
-A: Yes — scan detected 1 leaked password, 376 reused passwords and 18 weak passwords during evaluation.
+Pros
+No additional deployment required, EPM is built into Edge already installed on company devices
+No user training needed, password saving autofill and SSO work automatically
+Microsoft provides free training resources and documentation on their website
+User interface is clean and easy to understand
+One click password security scan, checks leaked reused and weak passwords
+Strong password suggestions built in
+Chrome passwords can be imported to Edge in one step
 
-**Q: Does it show which sites are affected?**
-A: Yes — shows exactly which accounts have reused or compromised passwords.
+Cons
+Password age not visible to users
+Breach alerts only appear inside Edge settings, users must actively check
+No email notification when a breach is detected
+Only works in Edge, Chrome users are not covered
 
-**Q: Does it suggest fixing the issue?**
-A: Yes — a direct "Change" button takes the user straight to that website's password change page.
+Adaptability
 
-**Q: Does it send email alerts when a breach is detected?**
-A: No — checked email after breach was detected during testing. No email notification was received. Alert appears inside Edge settings only.
+Pros
+Works with Microsoft apps like SharePoint, Teams, Outlook out of the box
+Also works with non-Microsoft tools, tested on JIRA, Confluence, Bitbucket and GitHub
+Works on Windows, Mac, iPhone and Android
+Policy follows the user, works on any device they sign into Edge with their work account
+Chrome passwords can be moved to Edge easily using import feature
+Microsoft regularly updates EPM at no extra cost
 
-**Q: Can admin enforce this feature?**
-A: Yes — confirmed via edge://policy. Once enabled by admin, users cannot turn it off.
+Cons
+Does not work on Chrome, employees using Chrome are not covered
+For non-Microsoft apps like JIRA, IT needs to do a one-time setup before SSO works
+Deploying shared passwords needs careful setup, wrong URL or username format will cause it to fail
 
----
+Scalability
 
-**3. Azure AD Single Sign-On (SSO)** ✅
+Pros
+Works for organisations of any size, no limit on number of users or devices
+Admin can create and apply policies to specific groups or all users at once
+No device enrollment needed for cloud policies, easy to roll out to new employees
+New employees automatically get all policies when they sign into Edge with their work account
 
-SSO allows users to sign in once with their work account and access all connected apps automatically without entering credentials again.
-
-**Q: Which apps does SSO work on?**
-A: Confirmed working on portal.office.com and non-Microsoft apps — JIRA, Confluence and Bitbucket.
-
-**Q: Does the user need to do anything to enable it?**
-A: No — works automatically when Edge is signed in with the work account on a company device.
-
-**Q: Do users need to verify MFA for every app?**
-A: No — MFA verified once for JIRA. Confluence and Bitbucket then signed in automatically in the same session.
-
-**Q: Does SSO work on Chrome?**
-A: Yes — Chrome signed in automatically via "Connected to Windows" on company-joined devices.
-
-**Q: What security controls exist on SSO?**
-A: 8 Conditional Access policies are active — portal.azure.com required additional authentication while everyday apps signed in automatically.
-
----
-
-**4. Extension Monitoring** ✅
-
-Extension Monitoring gives IT admins visibility into all browser extensions installed by employees across the organisation.
-
-**Q: What does Extension Monitoring show?**
-A: A list of all 30 extensions installed across company devices, with user count for each extension.
-
-**Q: Why does this matter?**
-A: Browser extensions can be a security risk. Monitoring helps IT see what is installed before it becomes a problem.
-
-**Q: Can admin see which employee has which extension?**
-A: No — only total user count is visible, not individual users.
-
-**Q: Can admin block an extension from this screen?**
-A: No — blocking requires a separate Configuration Policy. This screen is visibility only.
-
-**Q: Does it show risk level of extensions?**
-A: No — only extension ID and user count are shown.
-
----
-
-**5. Secure Password Deployment** ⏳ Testing in progress
-
-Admin deploys shared encrypted passwords to a group of users. Passwords appear in their Edge password manager automatically — users can use them for autofill but cannot view, edit or delete them.
-
-*End-to-end autofill testing not yet complete — pending policy sync. Results will be updated.*
-
----
-
-Does this work now?
+Cons
+Works best when everyone uses Edge, if employees use Chrome coverage is incomplete
+For stricter control on company devices, IT needs Intune access on top of EPM
+Shared password deployment needs a real shared account, cannot be used for personal accounts
