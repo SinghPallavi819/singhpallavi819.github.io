@@ -1,0 +1,80 @@
+
+**SLIDE 1 — Title**
+
+*"Thank you for having me. My name is Pallavi, and I'm the Application Security Intern at Toyota Insurance. Over the past few weeks I've been looking at one question — how secure is our code before it reaches production? What I found is something every person in this room needs to understand, whether you write code or not. So let me take you through it."*
+
+---
+
+**SLIDE 2 — Global Security Incidents**
+
+*"Let me start with the world. These are not small companies. SolarWinds — used by Microsoft, the US government, and thousands of enterprises globally. A single malicious update in their code went undetected for nearly a year. Log4Shell — a vulnerability hidden inside an open source library that was embedded in millions of applications worldwide. AT&T — 110 million customers exposed because of one unprotected credential. Change Healthcare — the largest health insurer in the US, brought to its knees for weeks by ransomware. The total combined loss across these four incidents alone is over 15 billion dollars. And every single one started with a vulnerability in code that nobody caught before it shipped."*
+
+---
+
+**SLIDE 3 — Toyota Group Incidents**
+
+*"Now you might think — those are American companies, big targets. But this has happened to our own group. Four times between 2023 and 2025. T-Connect and G-Link — 2.15 million customers' location data exposed because a cloud storage bucket was misconfigured and sat publicly accessible for nearly a decade. Toyota Financial Services — hit by ransomware through an unpatched vulnerability, $8 million in ransom demanded, systems taken offline across Europe and Africa. ZeroSevenGroup — 240 gigabytes of employee data, customer records, and internal network details leaked on the dark web through exposed credentials. And Toyota Financial Services is still dealing with active class action lawsuits in the US right now in 2025. Three of these four incidents were detectable before deployment. They weren't detected because there was no automated scanning in place."*
+
+---
+
+**SLIDE 4 — Business Impact of a Breach**
+
+*"So what does a breach actually cost? The average globally is $4.88 million — and that's just the direct cost. It takes 194 days on average just to find out you've been breached, and another 64 days to contain it. That's 258 days — nearly nine months — where an attacker is inside your systems, taking what they want. Stock price drops 7.5% within days of disclosure and underperforms the market by 15.6% over three years. 81% of customers stop engaging with the brand entirely after a breach. And 60% of small businesses close within six months of one. The numbers on the left side of this slide — customer trust, stock performance, regulatory standing, operations — that's what normal looks like. The right side is what happens after. This is not a hypothetical. This is documented reality across hundreds of companies between 2020 and 2025."*
+
+---
+
+**SLIDE 5 — Current State of Application Security**
+
+*"So where do we stand right now? Code at Toyota Insurance is written and tested manually by developers. There are no automated security checks before code is merged or deployed. Quality and security standards are not systematically enforced — it depends entirely on the individual developer's knowledge. Vulnerabilities in code, dependencies, and secrets go undetected until they are already in production. And there is no centralised view of security risk across our repositories. Nobody here — including me until recently — knows what vulnerabilities exist in our codebase right now. That's not a criticism of anyone. It's just the reality of where we are. And the question is — are we comfortable staying here, given everything on the previous three slides?"*
+
+---
+
+**SLIDE 6 — Proposal — Introducing Semgrep**
+
+*"This is my proposal. Semgrep is a static application security testing tool — which in plain English means it reads code the way a security expert would, before that code ever runs. It scans every line, every file, every dependency, and flags issues automatically. It's used by companies like Dropbox, Figma, Snowflake, and over 100,000 developers globally. It supports every major programming language. It runs in seconds. And it integrates directly into the development workflow — so developers don't have to change how they work. Security becomes part of the process, not an afterthought."*
+
+---
+
+**SLIDE 7 — How It Works in the Pipeline**
+
+*"Here's exactly how it fits in. A developer writes code and opens a pull request — which is essentially a request to merge their changes into the main codebase. At that moment, Semgrep runs automatically. It scans the code, checks it against hundreds of security rules, and if it finds something critical — a SQL injection, a hardcoded password, a dangerous function call — it blocks the pull request. The developer sees exactly what the issue is, where it is, and how to fix it. The code cannot merge until the issue is resolved. If nothing critical is found, the pull request goes through as normal. The whole scan takes seconds. Leadership gets full visibility through a dashboard. That's the pipeline."*
+
+---
+
+**SLIDE 8 — Business Value**
+
+*"Let me put this in business terms. The average breach costs $4.88 million. Semgrep costs a fraction of that — and it runs continuously, on every single code change, across every repository. Fixing a vulnerability before it ships to production costs on average 6 times less than fixing it after deployment — and a hundred times less than dealing with a breach. Beyond cost, there's speed — developers get instant feedback instead of finding out about issues weeks later in a security review. And there's compliance — automated scanning creates an audit trail, which matters increasingly under GDPR, PCI-DSS, and other regulatory frameworks. This is not a cost. This is protection of the revenue being generated by every other project in this building."*
+
+---
+
+**SLIDE 9 — Evaluation Results**
+
+*"I didn't just research this — I ran it. During the evaluation period, Semgrep scanned actual code and automatically blocked pull requests containing critical vulnerabilities before they could reach production. These were not theoretical findings. These were real issues in real code that would have shipped without detection under the current process. Critical findings were caught and stopped at the merge stage — exactly as designed. This is proof of concept. It works."*
+
+---
+
+**SLIDE 10 — Dashboard — Scans in Seconds**
+
+*"This is what the dashboard looks like. Every scan, every finding, every repository — in one place, in real time. What you're seeing here is a scan completing in seconds. Not hours, not a weekly report — seconds, on every code change. For leadership, this means for the first time there is actual visibility into the security posture of our codebase. No more guessing. No more finding out after the fact. This is what proactive security looks like."*
+
+---
+
+**SLIDE 11 — Use Case: Command Injection**
+
+*"Let me show you one specific example so this isn't abstract. Command injection is a type of vulnerability where an attacker can send input to an application that gets executed as a system command. In simple terms — if a piece of code takes something a user types and passes it directly to the operating system without checking it first, an attacker can type in a command instead of normal input. They can read files, delete data, or take full control of the system. It's one of the most common and most dangerous vulnerability types. Semgrep detects this automatically — it identifies exactly where the unsafe input is, flags it before the code ships, and tells the developer what to change."*
+
+---
+
+**SLIDE 12 — Source, Sink & Fix Guidance**
+
+*"Here's what makes Semgrep particularly valuable for developers. When it finds an issue, it doesn't just say 'there's a problem.' It shows the source — where the untrusted input enters the code. It shows the sink — where that input ends up being used dangerously. And it provides fix guidance — exactly what to change and why. This means a developer with no security background can understand and resolve the issue themselves, immediately. It removes the dependency on a dedicated security team to review every finding. Security knowledge is built into the workflow."*
+
+---
+
+**SLIDE 13 — Rollout Plan**
+
+*"So here is the plan. Three months — August, September, October. August is about setup and foundations — environment configuration, onboarding developers, training sessions, and a pilot scan on our highest-risk repositories. September is about expanding — reviewing the initial findings, tuning the rules, and running the full scan across all repositories. October is about operationalising it — triaging findings, setting up the remediation tracking workflow, and establishing the reporting dashboard as a permanent view for leadership. This is not a big bang implementation. It's a structured, phased rollout that starts generating value from week one.*
+
+*And I want to leave you with one final thought. I've spoken to other interns on revenue-generating projects here. They're doing important work. But the code and data powering those projects has vulnerabilities that nobody is currently catching. The revenue those projects generate means nothing if a breach wipes it out — and then some. You don't just need the project management intern and the data analytics intern. You need the security intern working alongside them.*
+
+*That's the ask. Thank you."*
