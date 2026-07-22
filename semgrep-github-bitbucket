@@ -1,0 +1,66 @@
+Semgrep + Bitbucket Evaluation — Pros, Cons, and Comparison with GitHub
+
+Pros of Bitbucket + Semgrep
+- Core scanning works fully without any paid Bitbucket plan
+- Full scan on master already completed successfully: 111 total findings, 108 code findings
+- Diff-aware PR scans run and detect findings correctly — verified with a test PR containing an intentionally injected SQL injection line, correctly flagged (1 finding)
+- Repo-level access tokens (free on all Bitbucket plans) are sufficient for scanning and code checkout
+- Findings accurately detected and visible in Semgrep dashboard, same as other SCMs
+- Detection engine/rule quality identical to GitHub — no difference in scan accuracy
+- SCM connection can be established with a repo-level token (showed "Connected" status once workspace name was entered correctly), confirming basic connectivity doesn't strictly require Premium
+
+Cons of Bitbucket + Semgrep
+- PR comments (inline findings on the pull request) do not work without Bitbucket Cloud Premium — confirmed directly: scan succeeded, finding was detected, but no comment posted on the PR
+- Semgrep Managed Scans (Semgrep's own automatic scanning, no manual setup needed) requires workspace-level access token — Premium only
+- Manual setup required: generate access token, correctly enter workspace details (initial attempt with "toyota-dealership/dvwa" format failed with a 404; had to correct to just "toyota-dealership")
+- Manual CI setup required: SEMGREP_BASELINE_REF, SEMGREP_REPO_NAME, SEMGREP_REPO_URL environment variables
+- Requires manually writing/maintaining a bitbucket-pipelines.yml file — this is only needed because we're not on Bitbucket Premium; the yml file is our manual workaround to trigger scans ourselves. With Bitbucket Premium, Semgrep's Managed Scans feature would handle scanning automatically (no yml file needed at all), since Semgrep would connect directly to the workspace instead of relying on a pipeline we build and maintain ourselves
+- Hit a real config bug during setup: SEMGREP_BASELINE_REF was set to origin/main, but repo's actual default branch is master — caused scan failure (exit code 2, "fatal: Not a valid object name origin/main") until manually diagnosed and fixed
+- Per Semgrep's official SCM support matrix, Bitbucket Cloud Free/Standard also lacks: Semgrep Managed Scans, and Auto PRs for Supply Chain findings (when Semgrep finds a vulnerable dependency/library, it can automatically open a pull request to upgrade it to a safe version — without this, you only get an alert and must fix it manually)
+
+Required bitbucket-pipelines.yml (Evidence)
+- Pipeline block used:
+  pipelines:
+    pull-requests:
+      '**':
+        - step:
+            name: Semgrep diff scan on PR branch
+            image: semgrep/semgrep
+            script:
+              - export SEMGREP_APP_TOKEN=$SEMGREP_APP_TOKEN
+              - export SEMGREP_BASELINE_REF="origin/master"
+              - git fetch origin "+refs/heads/*:refs/remotes/origin/*"
+              - semgrep ci
+- SEMGREP_APP_TOKEN: manually added as a repo variable in Bitbucket (Repo settings > Pipelines > Repository variables); separate credential from the Bitbucket access token used for SCM connection
+- SEMGREP_BASELINE_REF: must be manually set to match actual default branch
+- git fetch: required so pipeline can access baseline branch for comparison
+- None of this manual YAML/config work is needed on GitHub Actions
+
+How Bitbucket Differs from GitHub
+- GitHub: one-click OAuth App install, no manual token generation
+- GitHub: full Semgrep functionality on every plan, including free tier — no plan-based feature gating
+- GitHub Actions: zero additional CI configuration needed for PR comments ("no extra changes are needed" per Semgrep docs)
+- Bitbucket: manual token creation required
+- Bitbucket: correct workspace scoping required (workspace vs repo-level token distinction)
+- Bitbucket: Premium subscription required for full functionality
+- Bitbucket: manual CI YAML + environment variable setup required (unless using Managed Scans, which also needs Premium)
+
+Why Bitbucket Needs Premium (Root Cause)
+- Bitbucket Cloud only allows workspace-level access tokens on Premium-tier workspaces
+- Workspace-level tokens needed for: Managed Scans, full PR comment support, webhooks
+- Repo-level tokens (free, all plans) scoped to single repository only — cannot authorize workspace-wide operations
+- Confirmed in Semgrep's official docs: PR comments "require the SCM connection to use a workspace access token"
+- Confirmed in Semgrep's official docs: workspace access tokens "only available to users with Bitbucket Cloud Premium"
+
+Bitbucket Cloud Free/Standard — Missing Semgrep Features (per official SCM support matrix)
+- Semgrep Managed Scans (Semgrep's automatic scanning, no manual pipeline setup)
+- Auto PRs for Supply Chain findings (automatic pull requests that upgrade vulnerable dependencies to safe versions)
+
+Bitbucket Cloud Premium — Still Missing (same as GitHub Enterprise Server)
+- Auto PRs for Supply Chain findings
+
+Bottom Line
+- Scanning + finding detection: works on Bitbucket regardless of plan, but requires manual pipeline setup
+- PR comments + Managed Scans (Semgrep's automatic scanning): require Bitbucket Cloud Premium
+- GitHub: full functionality on any plan, free or paid, significantly simpler setup, no manual YAML required
+- Recommendation: if PR-level developer feedback and/or Managed Scans are required workflows, Bitbucket Cloud Premium is a necessary cost to factor into the evaluation, on top of Semgrep's own pricing
