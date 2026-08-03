@@ -4,6 +4,8 @@ After looking at what happened globally, what happened to the group, and where t
 Microsoft Edge Enterprise Management (EPM) — Evaluation Report
 Evaluated by: Pallavi | Date: July 2026
 
+In the last five years, cyberattacks have cost businesses trillions of dollars globally — and the numbers are only going up. Here are four of them. Together they caused over $15 billion in losses and exposed more than 110 million customers. But what makes these four significant is not just the scale — it is that every single one came down to a weakness in code that nobody caught before it shipped. Different companies, different industries, different attacks — same root cause every single time. And every single one of them was detectable before a single line of code ever reached production.
+
 EPM was evaluated against our organisation's browser and password management requirements using a hands-on approach in the company's live environment with global admin and Edge admin access.
 
 EPM Feature Assessment
