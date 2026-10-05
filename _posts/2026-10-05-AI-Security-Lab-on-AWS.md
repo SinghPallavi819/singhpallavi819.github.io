@@ -4,7 +4,7 @@ title: "AI Security Lab on AWS: Data Leakage, Guardrails, and Detection"
 categories: [projects]
 categorieslink: "/#projects"
 excerpt: "Hands-on AI security testing of a document-based customer-support assistant on AWS, comparing sensitive data exposure across models and testing Amazon Bedrock Guardrails and CloudWatch alerts."
-image: ai-security-lab.png
+image: AIAWSLAB.png
 ---
 
 ## Overview
