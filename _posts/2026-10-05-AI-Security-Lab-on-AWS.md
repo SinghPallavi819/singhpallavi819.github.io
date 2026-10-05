@@ -3,218 +3,107 @@ layout: post
 title: "AI Security Lab on AWS: Data Leakage, Guardrails, and Detection"
 categories: [projects]
 categorieslink: "/#projects"
-excerpt: "Hands-on AI security testing of a document-based customer-support assistant on AWS, comparing sensitive data exposure across models and testing Amazon Bedrock Guardrails and CloudWatch alerts."
+excerpt: "Testing an AI support assistant for data leaks, adding Amazon Bedrock Guardrails, and detecting credential requests with CloudWatch alerts."
 image: AIAWSLAB.png
 ---
 
 ## Overview
 
-This project explores **sensitive data exposure and defensive controls in an AI customer-support assistant on AWS**.
+I built an AI customer-support lab on AWS to test whether an assistant would share internal information and how to prevent and detect it.
 
-The assistant answers questions using company documents. I tested it as both attacker and defender to investigate whether it would reveal internal information and how to block and detect those attempts.
+The assistant used two documents: a public FAQ and an **INTERNAL ONLY** file containing a fake admin password and API key.
 
-The completed stages include model comparison, standalone guardrail testing, and detection using CloudWatch logs and alarms.
+I tested two models, added guardrails, and set up email alerts.
 
-All passwords and API keys used in this project were **fake demonstration data**.
-
----
-## Skills Demonstrated
-
-This project demonstrates offensive and defensive AI security concepts:
-
-- AI application security testing
-- credential extraction testing
-- sensitive data exposure analysis
-- comparative model evaluation
-- Amazon Bedrock Knowledge Bases
-- Amazon Bedrock Guardrails
-- ApplyGuardrail API testing
-- CloudWatch logging and metric filters
-- alarm configuration and alert validation
-- security findings documentation
-  
----
-## Goal
-
-Build a hands-on lab to investigate how an AI assistant handles sensitive information and evaluate defenses against credential extraction.
-
-The project demonstrates how to:
-
-- test an assistant for sensitive data exposure
-- compare responses across different models
-- evaluate input and output guardrails
-- detect credential extraction attempts in logs
-- validate email alerts
-- document findings and testing limitations
+**Status:** In progress. All credentials used in this lab were fake.
 
 ---
 
-## Environment Setup
+## Tools Used
 
-The lab used:
-
-- Amazon Bedrock models
-- an Amazon Bedrock Knowledge Base
-- a public FAQ document
-- an internal demonstration document containing dummy credentials
-- Amazon Bedrock Guardrails
-- the ApplyGuardrail API
-- Amazon CloudWatch model invocation logs
-- a CloudWatch metric filter and alarm
-
-The internal document was labeled **INTERNAL ONLY** and contained a fake admin password and API key.
-
-Both documents were available to the assistant during the initial tests.
+- Amazon Bedrock models and Knowledge Base
+- Amazon Bedrock Guardrails and ApplyGuardrail API
+- Amazon CloudWatch logs, metric filters, and alarms
+- Amazon SNS email notifications
 
 ---
 
-## Credential Extraction Testing
+## Testing for Data Leaks
 
-The assistant was asked to provide the admin password from the internal document.
+I asked both models for the admin password. I then claimed to be the administrator and asked them to repeat the internal document.
 
-A follow-up request claimed that the user was the administrator.
+The documents and questions stayed the same. Only the model changed.
 
-The test compared two models using the **same documents and the same questions**.
+### Stronger Model
 
-The model was the only variable changed in this comparison.
+The stronger model refused the tested requests. It explained that it could not verify my administrator status through chat.
 
----
+![Stronger Model Response](/assets/images/Stronger-AI.jpeg)
 
-### Stronger Model Response
+### Weaker Model
 
-The stronger safety-tuned model refused to disclose the internal information in the tested attempts.
+The weaker model shared the fake password when asked directly. After I claimed to be the administrator, it repeated the internal document, including the fake API key.
 
-It continued to refuse when I claimed to be the administrator.
+![Weaker Model Response](/assets/images/Weaker-AI.jpeg)
 
-This showed that the model treated the internal label as a reason to withhold the information during these tests.
-
----
-
-### Weaker Model Response
-
-The weaker model disclosed the internal file after I claimed to be the administrator.
-
-The disclosed content included:
-
-- the dummy admin password
-- the dummy API key
-- the remaining internal file contents
-
-The model accepted an unverified identity claim as justification for sharing the information.
+This showed that model choice affected the result. It also showed that an **INTERNAL ONLY** label was not enough to protect the document.
 
 ---
 
-## Sensitive Data Exposure Finding
+## Adding Guardrails
 
-The initial tests demonstrated **model-dependent behavior when handling sensitive document content**.
+I configured Amazon Bedrock Guardrails with a denied topic for internal credentials and a prompt attack filter.
 
-One model refused the tested requests, while the other exposed the internal file.
+Using the **ApplyGuardrail API**, I tested credential requests as input and the leaked dummy credentials as output. Both were blocked in the tests.
 
-Because the assistant could access the internal document, disclosure depended partly on the model's interpretation of the request.
+I also tested a password request in the guardrail console with **Nova 2 Lite** selected. The console reported a guardrail intervention.
 
-The **INTERNAL ONLY** label did not establish an enforced access boundary.
+![Guardrail Intervention](/assets/images/Nova-2-lite-response.jpeg)
 
-The results apply to the tested prompts. They do not prove that the stronger model would resist every extraction attempt.
-
----
-
-## Configuring Amazon Bedrock Guardrails
-
-The next stage focused on blocking credential extraction.
-
-I configured Amazon Bedrock Guardrails with:
-
-- a denied topic for internal credentials
-- a prompt attack filter
-
-I then evaluated the guardrail using the **ApplyGuardrail API**.
-
-Testing covered both incoming requests and content supplied as model output.
+*This screenshot shows the console test, separate from the ApplyGuardrail API tests.*
 
 ---
 
-## Input Guardrail Testing
+## Logging and Detection
 
-Requests for internal credentials were submitted to the guardrail as input.
+I enabled model invocation logging in CloudWatch to review model interactions.
 
-**Observed result:** The tested credential requests were blocked.
+![CloudWatch Invocation Log](/assets/images/Log-management-data.jpeg)
 
-This demonstrated that the configured guardrail could identify and block those requests during standalone input testing.
+I then created a metric filter named **CredentialExtractionAttempts** to flag credential-related terms in the logs.
 
----
+![Credential Metric Filter](/assets/images/CredentialFilter.jpeg)
 
-## Output Guardrail Testing
-
-The previously leaked dummy credentials were supplied to the guardrail as model output.
-
-This tested whether the guardrail would block a response containing the demonstration credentials.
-
-**Observed result:** The tested output was blocked.
-
-This validated output filtering for the supplied content. It was a standalone test rather than a complete application request.
+This is keyword-based detection. It can also match normal questions or model refusals, so a match does not mean a leak occurred.
 
 ---
 
-## Model Invocation Logging
+## Alarm and Email Alert
 
-To add visibility into extraction attempts, I enabled **model invocation logging to Amazon CloudWatch**.
+I connected the detection metric to **CredentialAttackAlarm**.
 
-The logs provided the basis for detecting suspicious requests.
+After a test extraction attempt, the alarm entered the **ALARM** state.
 
-This extended the lab beyond response blocking to include monitoring and notification.
+![CloudWatch Alarm](/assets/images/AWS-alarms.jpeg)
 
----
+An email notification arrived through Amazon SNS approximately five minutes later.
 
-## Credential Extraction Detection
+![AWS Email Notification](/assets/images/AWS-notification.jpeg)
 
-I created a **CloudWatch metric filter** to flag credential extraction attempts in the invocation logs.
-
-A CloudWatch alarm was configured to generate an email notification when the detection condition was met.
-
-The detection workflow connected:
-
-- model invocation logs
-- a metric filter
-- a CloudWatch alarm
-- an email notification
+This confirmed that the alert workflow worked for the tested attempt.
 
 ---
 
-## Alert Validation
+## Limits
 
-I submitted a test credential extraction attempt to validate the detection workflow.
+I tested the guardrail separately because the Knowledge Base console test interface I used did not let me attach it directly.
 
-**Observed result:** An email alert arrived approximately five minutes after the test attack.
-
-This confirmed that the configured detection and notification workflow triggered for the tested attempt.
-
-Additional testing is needed to evaluate false positives and attempts that the filter may miss.
-
----
-
-## Testing Limitations
-
-In the Knowledge Base console test interface used for this lab, I could not attach a guardrail directly.
-
-I therefore tested the guardrail separately through the **ApplyGuardrail API**.
-
-The completed tests demonstrated:
-
-- credential exposure from the weaker model
-- refusals from the stronger model for the tested prompts
-- standalone blocking of tested credential requests
-- standalone blocking of supplied credential-containing output
-- an email alert following a test extraction attempt
-
-Guardrail enforcement within the complete application request flow has not yet been validated.
+The tests show that the configured controls blocked the requests and outputs I tested. The complete application workflow still needs validation.
 
 ---
 
 ## Key Takeaway
 
-Model choice influenced whether the assistant disclosed internal information in this lab.
+Model choice matters, but it should not be the only protection for sensitive data.
 
-Guardrails blocked the credential requests and outputs I tested, while CloudWatch generated an alert for a test extraction attempt.
-
-The next phase will establish which documents each user can access and validate the defenses within the complete application workflow.
-```
+This lab helped me test a leak, add controls, and confirm an alert. The next step is to control which documents each user can access.
