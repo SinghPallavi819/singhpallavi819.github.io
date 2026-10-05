@@ -15,12 +15,25 @@ The assistant answers questions using company documents. I tested it as both att
 
 The completed stages include model comparison, standalone guardrail testing, and detection using CloudWatch logs and alarms.
 
-**Project status: In progress.** Data separation and end-to-end application security testing are planned next.
-
 All passwords and API keys used in this project were **fake demonstration data**.
 
 ---
+## Skills Demonstrated
 
+This project demonstrates offensive and defensive AI security concepts:
+
+- AI application security testing
+- credential extraction testing
+- sensitive data exposure analysis
+- comparative model evaluation
+- Amazon Bedrock Knowledge Bases
+- Amazon Bedrock Guardrails
+- ApplyGuardrail API testing
+- CloudWatch logging and metric filters
+- alarm configuration and alert validation
+- security findings documentation
+  
+---
 ## Goal
 
 Build a hands-on lab to investigate how an AI assistant handles sensitive information and evaluate defenses against credential extraction.
@@ -194,40 +207,6 @@ The completed tests demonstrated:
 - an email alert following a test extraction attempt
 
 Guardrail enforcement within the complete application request flow has not yet been validated.
-
----
-
-## Next Steps
-
-The next phase will focus on document access boundaries and integrated testing.
-
-Planned work includes:
-
-- separating public documents from internal documents
-- enforcing authorization before retrieving internal content
-- attaching guardrails to the application's API request flow
-- repeating extraction tests against the integrated application
-- testing legitimate support questions for unintended blocking
-- reviewing sensitive content captured in logs
-
-These steps have not yet been completed.
-
----
-
-## Skills Demonstrated
-
-This project demonstrates offensive and defensive AI security concepts:
-
-- AI application security testing
-- credential extraction testing
-- sensitive data exposure analysis
-- comparative model evaluation
-- Amazon Bedrock Knowledge Bases
-- Amazon Bedrock Guardrails
-- ApplyGuardrail API testing
-- CloudWatch logging and metric filters
-- alarm configuration and alert validation
-- security findings documentation
 
 ---
 
