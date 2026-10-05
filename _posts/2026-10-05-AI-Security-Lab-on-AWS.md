@@ -1,4 +1,3 @@
-```markdown
 ---
 layout: post
 title: "AI Security Lab on AWS: Data Leakage, Guardrails, and Detection"
