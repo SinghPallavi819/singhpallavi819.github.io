@@ -5,98 +5,452 @@ title: Pallavi | Portfolio
 
 <style>
   body {
-    background: radial-gradient(ellipse at 10% 0%, #eef0ff, transparent 55%),
-      radial-gradient(ellipse at 100% 90%, #eef9f6, transparent 50%), #f8fafc;
+    background:
+      radial-gradient(ellipse at 10% 0%, #eef0ff, transparent 55%),
+      radial-gradient(ellipse at 100% 90%, #eef9f6, transparent 50%),
+      #f8fafc;
   }
-  html, body { height: auto; min-height: 100%; overflow-y: auto; }
-  .portfolio { --ink: #172033; --muted: #526078; --accent: #4338ca;
-    max-width: 1120px; margin: 0 auto; padding: 48px 24px 64px;
-    color: var(--ink); font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    font-size: 16px; line-height: 1.65; text-align: left; }
-  .portfolio, .portfolio * { box-sizing: border-box; }
-  .portfolio .hero { display: grid; grid-template-columns: minmax(0, 1.85fr) minmax(0, 1fr);
-    gap: 28px; align-items: start; }
-  .portfolio .card { background: #fff; border: 1px solid #e3e8f0;
-    border-radius: 24px; box-shadow: 0 12px 36px rgba(23, 32, 51, .05); }
-  .portfolio .hero-card { padding: 36px; min-width: 0; }
-  .portfolio .eyebrow { margin: 0 0 10px; font-size: 12px; font-weight: 700;
-    letter-spacing: .12em; text-transform: uppercase; color: var(--accent); }
-  .portfolio h1 { margin: 0 0 12px; color: var(--ink); font-size: clamp(36px, 5vw, 52px);
-    line-height: 1.12; letter-spacing: -.04em; font-weight: 750; }
-  .portfolio .intro { margin: 0 0 24px; font-size: 19px; line-height: 1.55; color: #34435b; }
-  .portfolio .bio p { margin: 0 0 18px; max-width: 65ch; color: var(--muted); }
-  .portfolio strong { color: var(--ink); font-weight: 650; }
-  .portfolio .chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 24px 0 12px;
-    padding: 0; list-style: none; }
-  .portfolio .chip { margin: 0; padding: 6px 11px; border-radius: 999px;
-    background: #f1f3ff; border: 1px solid #dfe3fa; color: #373080;
-    font-size: 12px; font-weight: 600; line-height: 1.5; }
-  .portfolio .skills { color: var(--muted); font-size: 14px; }
-  .portfolio .skills summary { cursor: pointer; width: fit-content; padding: 5px 0;
-    color: var(--accent); font-weight: 600; }
-  .portfolio .skills p { margin: 10px 0 0; line-height: 1.8; }
-  .portfolio .btns { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
-  .portfolio .btn { display: inline-flex; justify-content: center; align-items: center;
-    min-height: 44px; padding: 10px 16px; border: 1px solid #d9dfeb; border-radius: 10px;
-    background: #fff; color: var(--ink); font-size: 14px; font-weight: 600; text-decoration: none;
-    transition: background .15s ease, border-color .15s ease; }
-  .portfolio .btn:hover { background: #f1f3ff; border-color: #a5a0e9; }
-  .portfolio .btn.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
-  .portfolio .btn.primary:hover { background: #3730a3; }
-  .portfolio a:focus-visible, .portfolio summary:focus-visible {
-    outline: 3px solid #4338ca; outline-offset: 4px; }
-  .portfolio .profile-card { overflow: hidden; }
-  .portfolio .profile-photo { display: block; width: 100%; aspect-ratio: 1 / 1;
-    height: auto; object-fit: cover; object-position: center 25%; background: #eef0f5; }
-  .portfolio .profile-body { padding: 24px; }
-  .portfolio .profile-body h2 { margin: 0 0 10px; font-size: 18px; line-height: 1.4; color: var(--ink); }
-  .portfolio .role-list { margin: 0; padding-left: 20px; color: var(--muted); font-size: 14px; }
-  .portfolio .role-list li { margin: 5px 0; }
-  .portfolio .role-note { margin: 16px 0 0; padding-top: 16px; border-top: 1px solid #e8ecf3;
-    font-size: 13px; color: var(--muted); }
-  .portfolio .projects { margin-top: 48px; scroll-margin-top: 90px; }
-  .portfolio .section-heading h2 { margin: 0 0 6px; font-size: 28px;
-    letter-spacing: -.025em; line-height: 1.3; color: var(--ink); }
-  .portfolio .section-heading p { margin: 0; color: var(--muted); font-size: 15px; }
-  .portfolio .projects-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 24px; margin-top: 24px; }
-  .portfolio .project-card { display: flex; flex-direction: column; min-width: 0;
-    overflow: hidden; background: #fff; border: 1px solid #e0e6ef; border-radius: 16px;
-    color: var(--ink); text-decoration: none; box-shadow: 0 6px 20px rgba(23, 32, 51, .04);
-    transition: transform .15s ease, box-shadow .15s ease; }
-  .portfolio .project-card:hover { transform: translateY(-3px);
-    box-shadow: 0 12px 28px rgba(23, 32, 51, .1); }
-  .portfolio .project-image { display: block; width: 100%; aspect-ratio: 16 / 9;
-    object-fit: cover; object-position: center 20%; background: #eef0f5; }
-  .portfolio .project-placeholder { background: linear-gradient(135deg, #e9edff, #e1f3ef); }
-  .portfolio .project-body { display: flex; flex-direction: column; flex: 1; padding: 22px; }
-  .portfolio .project-body h3 { margin: 0 0 12px; font-size: 17px; line-height: 1.45;
-    color: var(--ink); overflow-wrap: anywhere; }
-  .portfolio .project-body p { margin: 0 0 20px; color: var(--muted); font-size: 14px; line-height: 1.65; }
-  .portfolio .project-link { margin-top: auto; color: var(--accent); font-size: 13px; font-weight: 650; }
+
+  html,
+  body {
+    height: auto;
+    min-height: 100%;
+    overflow-y: auto;
+  }
+
+  .portfolio {
+    --ink: #172033;
+    --muted: #526078;
+    --accent: #4338ca;
+
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 48px 24px 64px;
+    color: var(--ink);
+    font-family: system-ui, -apple-system, BlinkMacSystemFont,
+      "Segoe UI", sans-serif;
+    font-size: 16px;
+    line-height: 1.65;
+    text-align: left;
+  }
+
+  .portfolio,
+  .portfolio * {
+    box-sizing: border-box;
+  }
+
+  .portfolio .hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1.85fr) minmax(0, 1fr);
+    gap: 28px;
+    align-items: start;
+  }
+
+  .portfolio .card {
+    background: #fff;
+    border: 1px solid #e3e8f0;
+    border-radius: 24px;
+    box-shadow: 0 12px 36px rgba(23, 32, 51, .05);
+  }
+
+  .portfolio .hero-card {
+    padding: 36px;
+    min-width: 0;
+  }
+
+  .portfolio .eyebrow {
+    margin: 0 0 10px;
+    color: var(--accent);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+  }
+
+  .portfolio h1 {
+    margin: 0 0 20px;
+    color: var(--ink);
+    font-size: clamp(36px, 5vw, 52px);
+    line-height: 1.12;
+    letter-spacing: -.04em;
+    font-weight: 750;
+  }
+
+  .portfolio #portfolio-title {
+    animation: greeting-enter .8s .15s ease-out backwards;
+  }
+
+  .portfolio #portfolio-title::after {
+    content: "";
+    display: block;
+    width: 72px;
+    height: 4px;
+    margin-top: 16px;
+    border-radius: 999px;
+    background: linear-gradient(90deg, #4338ca, #06b6d4);
+    transform-origin: left;
+    animation: greeting-underline .6s .65s ease-out backwards;
+  }
+
+  .portfolio .intro {
+    margin: 0 0 24px;
+    font-size: 19px;
+    line-height: 1.55;
+    color: #34435b;
+  }
+
+  .portfolio .bio p {
+    margin: 0 0 18px;
+    max-width: 65ch;
+    color: var(--muted);
+  }
+
+  .portfolio strong {
+    color: var(--ink);
+    font-weight: 650;
+  }
+
+  .portfolio .chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 24px 0 12px;
+    padding: 0;
+    list-style: none;
+  }
+
+  .portfolio .chip {
+    margin: 0;
+    padding: 6px 11px;
+    border-radius: 999px;
+    background: #f1f3ff;
+    border: 1px solid #dfe3fa;
+    color: #373080;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1.5;
+    transition: background .2s ease;
+  }
+
+  .portfolio .chip:hover {
+    background: #e5e8ff;
+  }
+
+  .portfolio .skills {
+    color: var(--muted);
+    font-size: 14px;
+  }
+
+  .portfolio .skills summary {
+    cursor: pointer;
+    width: fit-content;
+    padding: 5px 0;
+    color: var(--accent);
+    font-weight: 600;
+  }
+
+  .portfolio .skills p {
+    margin: 10px 0 0;
+    line-height: 1.8;
+  }
+
+  .portfolio .btns {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 28px;
+  }
+
+  .portfolio .btn {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 44px;
+    padding: 10px 16px;
+    border: 1px solid #d9dfeb;
+    border-radius: 10px;
+    background: #fff;
+    color: var(--ink);
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    transition:
+      background .15s ease,
+      border-color .15s ease,
+      transform .15s ease;
+  }
+
+  .portfolio .btn:hover {
+    background: #f1f3ff;
+    border-color: #a5a0e9;
+    transform: translateY(-2px);
+  }
+
+  .portfolio .btn.primary {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #fff;
+  }
+
+  .portfolio .btn.primary:hover {
+    background: #3730a3;
+  }
+
+  .portfolio a:focus-visible,
+  .portfolio summary:focus-visible {
+    outline: 3px solid #4338ca;
+    outline-offset: 4px;
+  }
+
+  .portfolio .profile-card {
+    min-width: 0;
+    overflow: hidden;
+    animation: portfolio-enter .6s .1s ease-out backwards;
+  }
+
+  /* Natural image proportions prevent cropping. */
+  .portfolio .profile-photo {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    min-height: 0;
+    aspect-ratio: auto;
+    object-fit: contain;
+    object-position: center top;
+    align-self: start;
+    background: #eef0f5;
+  }
+
+  .portfolio .profile-body {
+    padding: 24px;
+  }
+
+  .portfolio .profile-body h2 {
+    margin: 0 0 10px;
+    font-size: 18px;
+    line-height: 1.4;
+    color: var(--ink);
+  }
+
+  .portfolio .role-list {
+    margin: 0;
+    padding-left: 20px;
+    color: var(--muted);
+    font-size: 14px;
+  }
+
+  .portfolio .role-list li {
+    margin: 5px 0;
+  }
+
+  .portfolio .role-note {
+    margin: 16px 0 0;
+    padding-top: 16px;
+    border-top: 1px solid #e8ecf3;
+    font-size: 13px;
+    color: var(--muted);
+  }
+
+  .portfolio .projects {
+    margin-top: 48px;
+    scroll-margin-top: 90px;
+    animation: portfolio-enter .6s .2s ease-out backwards;
+  }
+
+  .portfolio .section-heading h2 {
+    margin: 0 0 6px;
+    font-size: 28px;
+    letter-spacing: -.025em;
+    line-height: 1.3;
+    color: var(--ink);
+  }
+
+  .portfolio .section-heading p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 15px;
+  }
+
+  .portfolio .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+    margin-top: 24px;
+  }
+
+  .portfolio .project-card {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    overflow: hidden;
+    background: #fff;
+    border: 1px solid #e0e6ef;
+    border-radius: 16px;
+    color: var(--ink);
+    text-decoration: none;
+    box-shadow: 0 6px 20px rgba(23, 32, 51, .04);
+    transition: transform .2s ease, box-shadow .2s ease;
+  }
+
+  .portfolio .project-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 28px rgba(23, 32, 51, .1);
+  }
+
+  .portfolio .project-image {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    object-position: center 20%;
+    background: #eef0f5;
+  }
+
+  .portfolio .project-placeholder {
+    background: linear-gradient(135deg, #e9edff, #e1f3ef);
+  }
+
+  .portfolio .project-body {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: 22px;
+  }
+
+  .portfolio .project-body h3 {
+    margin: 0 0 12px;
+    font-size: 17px;
+    line-height: 1.45;
+    color: var(--ink);
+    overflow-wrap: anywhere;
+  }
+
+  .portfolio .project-body p {
+    margin: 0 0 20px;
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.65;
+  }
+
+  .portfolio .project-link {
+    margin-top: auto;
+    color: var(--accent);
+    font-size: 13px;
+    font-weight: 650;
+  }
+
+  @keyframes greeting-enter {
+    from {
+      opacity: 0;
+      transform: translateY(14px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes greeting-underline {
+    from {
+      opacity: 0;
+      transform: scaleX(0);
+    }
+    to {
+      opacity: 1;
+      transform: scaleX(1);
+    }
+  }
+
+  @keyframes portfolio-enter {
+    from {
+      opacity: 0;
+      transform: translateY(12px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
   @media (max-width: 1000px) {
-    .portfolio .hero { grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); gap: 20px; }
-    .portfolio .hero-card { padding: 28px; }
-    .portfolio .projects-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .portfolio .hero {
+      grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
+      gap: 20px;
+    }
+
+    .portfolio .hero-card {
+      padding: 28px;
+    }
+
+    .portfolio .projects-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
   }
+
   @media (max-width: 760px) {
-    .portfolio { padding: 28px 18px 44px; }
-    .portfolio .hero { grid-template-columns: 1fr; }
-    .portfolio .profile-card { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr); }
-    .portfolio .profile-photo { height: 100%; min-height: 240px; }
-    .portfolio .projects { margin-top: 36px; }
+    .portfolio {
+      padding: 28px 18px 44px;
+    }
+
+    .portfolio .hero {
+      grid-template-columns: 1fr;
+    }
+
+    .portfolio .profile-card {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr);
+      align-items: start;
+    }
+
+    .portfolio .projects {
+      margin-top: 36px;
+    }
   }
+
   @media (max-width: 520px) {
-    .portfolio .hero-card { padding: 24px; }
-    .portfolio .intro { font-size: 18px; }
-    .portfolio .projects-grid { grid-template-columns: 1fr; gap: 20px; }
-    .portfolio .profile-card { display: block; }
-    .portfolio .profile-photo { height: auto; min-height: 0; aspect-ratio: 4 / 3; object-position: center 25%; }
-    .portfolio .btns { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .portfolio .hero-card {
+      padding: 24px;
+    }
+
+    .portfolio .intro {
+      font-size: 18px;
+    }
+
+    .portfolio .projects-grid {
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+
+    .portfolio .profile-card {
+      display: block;
+    }
+
+    .portfolio .btns {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
   }
+
   @media (prefers-reduced-motion: reduce) {
-    .portfolio .project-card, .portfolio .btn { transition: none; }
-    .portfolio .project-card:hover { transform: none; }
+    .portfolio #portfolio-title,
+    .portfolio #portfolio-title::after,
+    .portfolio .profile-card,
+    .portfolio .projects {
+      animation: none;
+    }
+
+    .portfolio .btn,
+    .portfolio .chip,
+    .portfolio .project-card {
+      transition: none;
+    }
+
+    .portfolio .btn:hover,
+    .portfolio .project-card:hover {
+      transform: none;
+    }
   }
 </style>
 
@@ -104,66 +458,162 @@ title: Pallavi | Portfolio
   <section class="hero" aria-labelledby="portfolio-title">
     <div class="card hero-card">
       <p class="eyebrow">Cybersecurity portfolio</p>
+
       <h1 id="portfolio-title">Hi, I’m Pallavi.</h1>
-      <p class="intro">Computer Science graduate focused on application security and the intersection of AI and cybersecurity.</p>
+
+      <p class="intro">
+        Computer Science graduate focused on application security
+        and the intersection of AI and cybersecurity.
+      </p>
+
       <div class="bio">
-        <p>I’m specializing in cybersecurity, with interests in <strong>Application Security, AI Security, Vulnerability Management, and Cloud Security</strong>. I enjoy understanding how applications work, identifying security weaknesses, and exploring ways to prevent them.</p>
-        <p>During my <strong>Cybersecurity Internship at Toyota Insurance Management Solutions</strong>, I configured and tested a <strong>pilot Semgrep SAST integration in Bitbucket Pipelines</strong>, evaluated security findings, and worked with SAST/SCA tools to support secure development practices.</p>
-        <p>My projects explore AI-assisted vulnerability analysis, SOC alert triage, and AWS threat detection. I continue building my skills through hands-on labs, code review, and security automation.</p>
+        <p>
+          I’m specializing in cybersecurity, with interests in
+          <strong>Application Security, AI Security, Vulnerability
+          Management, and Cloud Security</strong>. I enjoy
+          understanding how applications work, identifying security
+          weaknesses, and exploring ways to prevent them.
+        </p>
+
+        <p>
+          During my <strong>Cybersecurity Internship at Toyota
+          Insurance Management Solutions</strong>, I configured
+          and tested a <strong>pilot Semgrep SAST integration in
+          Bitbucket Pipelines</strong>, evaluated security findings,
+          and worked with SAST/SCA tools to support secure
+          development practices.
+        </p>
+
+        <p>
+          My projects explore AI-assisted vulnerability analysis,
+          SOC alert triage, and AWS threat detection. I continue
+          building my skills through hands-on labs, code review,
+          and security automation.
+        </p>
       </div>
+
       <ul class="chips" aria-label="Areas of focus">
         <li class="chip">Application Security</li>
         <li class="chip">AI Security</li>
         <li class="chip">Vulnerability Management</li>
         <li class="chip">Cloud Security</li>
       </ul>
+
       <details class="skills">
         <summary>Tools and skills I work with</summary>
-        <p>AI-Assisted Security Automation · Secure SDLC · SAST / SCA / DAST · Semgrep · Secure Code Review · CI/CD Security · OWASP Top 10 · AWS Security · AWS Inspector · SOC Alert Triage · Microsoft Defender</p>
+        <p>
+          AI-Assisted Security Automation · Secure SDLC ·
+          SAST / SCA / DAST · Semgrep · Secure Code Review ·
+          CI/CD Security · OWASP Top 10 · AWS Security ·
+          AWS Inspector · SOC Alert Triage · Microsoft Defender
+        </p>
       </details>
+
       <nav class="btns" aria-label="Portfolio links">
-        <a class="btn primary" href="{{ '/PallaviResume.pdf' | relative_url }}">View resume</a>
-        <a class="btn" href="{{ '/' | relative_url }}#projects">Explore projects</a>
-        <a class="btn" href="https://www.linkedin.com/in/pallavi-/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-        <a class="btn" href="mailto:fnu.pallavi@yahoo.com">Email me</a>
+        <a
+          class="btn primary"
+          href="{{ '/PallaviResume.pdf' | relative_url }}"
+        >
+          View resume
+        </a>
+
+        <a class="btn" href="{{ '/' | relative_url }}#projects">
+          Explore projects
+        </a>
+
+        <a
+          class="btn"
+          href="https://www.linkedin.com/in/pallavi-/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          LinkedIn
+        </a>
+
+        <a class="btn" href="mailto:fnu.pallavi@yahoo.com">
+          Email me
+        </a>
       </nav>
     </div>
-    <aside class="card profile-card" aria-labelledby="roles-title">
-      <img class="profile-photo" src="{{ '/assets/images/Headshot.jpeg' | relative_url }}" alt="Portrait of Pallavi" width="480" height="480">
+
+    <aside
+      class="card profile-card"
+      aria-labelledby="roles-title"
+    >
+      <img
+        class="profile-photo"
+        src="{{ '/assets/images/Headshot.jpeg' | relative_url }}"
+        alt="Portrait of Pallavi"
+      >
+
       <div class="profile-body">
         <h2 id="roles-title">Roles I’m looking for</h2>
+
         <ul class="role-list">
           <li>Junior Application Security roles</li>
           <li>Entry-level Security Analyst roles</li>
           <li>Vulnerability Management roles</li>
         </ul>
-        <p class="role-note">Interested in teams building secure applications, improving cloud security, and exploring AI security.</p>
+
+        <p class="role-note">
+          Interested in teams building secure applications,
+          improving cloud security, and exploring AI security.
+        </p>
       </div>
     </aside>
   </section>
 
-  <section class="projects" id="projects" aria-labelledby="projects-title">
+  <section
+    class="projects"
+    id="projects"
+    aria-labelledby="projects-title"
+  >
     <div class="section-heading">
       <h2 id="projects-title">Projects</h2>
-      <p>Hands-on work in AI security, application security, cloud detection, and security investigations.</p>
+      <p>
+        Hands-on work in AI security, application security,
+        cloud detection, and security investigations.
+      </p>
     </div>
+
     <div class="projects-grid">
       <!-- Show the latest eight project posts. -->
       {% assign shown = 0 %}
       {% for post in site.posts %}
         {% if shown < 8 %}
-          <a class="project-card" href="{{ post.url | relative_url }}">
+          <a
+            class="project-card"
+            href="{{ post.url | relative_url }}"
+          >
             {% if post.image and post.image != '' %}
-              <img class="project-image" src="{{ '/assets/images/' | append: post.image | relative_url }}" alt="" loading="lazy" width="640" height="360">
+              <img
+                class="project-image"
+                src="{{ '/assets/images/' | append: post.image | relative_url }}"
+                alt=""
+                loading="lazy"
+                width="640"
+                height="360"
+              >
             {% else %}
-              <div class="project-image project-placeholder" aria-hidden="true"></div>
+              <div
+                class="project-image project-placeholder"
+                aria-hidden="true"
+              ></div>
             {% endif %}
+
             <div class="project-body">
               <h3>{{ post.title | escape }}</h3>
-              <p>{{ post.excerpt | strip_html | normalize_whitespace | truncate: 180 | escape }}</p>
-              <span class="project-link">View project <span aria-hidden="true">→</span></span>
+
+              <p>
+                {{ post.excerpt | strip_html | normalize_whitespace | truncate: 180 | escape }}
+              </p>
+
+              <span class="project-link">
+                View project <span aria-hidden="true">→</span>
+              </span>
             </div>
           </a>
+
           {% assign shown = shown | plus: 1 %}
         {% endif %}
       {% endfor %}
