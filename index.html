@@ -452,6 +452,24 @@ title: Pallavi | Portfolio
       transform: none;
     }
   }
+
+  .portfolio .pt-progress { margin-top: 40px; padding: 30px; background: #fff; border: 1px solid #e3e8f0; border-radius: 24px; }
+  .portfolio .pt-progress h2 { margin: 0 0 8px; font-size: 26px; line-height: 1.3; }
+  .portfolio .pt-description { margin: 0; color: var(--muted); }
+  .portfolio .pt-stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin: 24px 0; }
+  .portfolio .pt-stats > div { padding: 18px; border-radius: 14px; background: #f7f8fd; }
+  .portfolio .pt-stats strong { display: block; font-size: 28px; color: var(--accent); }
+  .portfolio .pt-stats span { font-size: 13px; color: var(--muted); }
+  .portfolio .pt-track { margin-top: 18px; }
+  .portfolio .pt-track label { display: flex; justify-content: space-between; gap: 12px; margin-bottom: 8px; font-size: 14px; font-weight: 600; }
+  .portfolio .pt-track progress { display: block; width: 100%; height: 12px; border: 0; border-radius: 999px; overflow: hidden; appearance: none; background: #eef0f7; accent-color: #4338ca; }
+  .portfolio .pt-track progress::-webkit-progress-bar { background: #eef0f7; }
+  .portfolio .pt-track progress::-webkit-progress-value { background: linear-gradient(90deg, #4338ca, #06b6d4); border-radius: 999px; }
+  .portfolio .pt-track progress::-moz-progress-bar { background: linear-gradient(90deg, #4338ca, #06b6d4); border-radius: 999px; }
+  .portfolio .pt-footer { display: flex; align-items: center; flex-wrap: wrap; gap: 16px; margin-top: 24px; }
+  .portfolio .pt-footer p { margin: 0; font-size: 12px; color: var(--muted); }
+  @media (max-width: 520px) { .portfolio .pt-progress { padding: 22px; } .portfolio .pt-stats { grid-template-columns: 1fr; gap: 10px; } }
+
 </style>
 
 <div class="portfolio">
@@ -562,6 +580,33 @@ title: Pallavi | Portfolio
       </div>
     </aside>
   </section>
+
+  {% assign pt = site.data.pentesterlab %}
+  {% if pt %}
+  <section class="pt-progress" aria-labelledby="pt-title">
+    <p class="eyebrow">Continuous learning</p>
+    <h2 id="pt-title">My PentesterLab Journey</h2>
+    <p class="pt-description">Building foundations in web security and Unix, alongside secure code review practice.</p>
+    <div class="pt-stats">
+      <div><strong>{{ pt.exercises }}</strong><span>Exercises completed</span></div>
+      <div><strong>{{ pt.overall_percent }}%</strong><span>Overall platform progress</span></div>
+      <div><strong>{{ pt.tracks.Introduction.completed }}/{{ pt.tracks.Introduction.total }}</strong><span>Introduction exercises completed</span></div>
+    </div>
+    {% assign track_names = 'Unix,Essential' | split: ',' %}
+    {% for name in track_names %}
+      {% assign track = pt.tracks[name] %}
+      {% assign percent = track.completed | times: 100.0 | divided_by: track.total | round %}
+      <div class="pt-track">
+        <label for="pt-{{ name | slugify }}"><span>{{ name }} badge exercises</span><span>{{ track.completed }}/{{ track.total }} · {{ percent }}%</span></label>
+        <progress id="pt-{{ name | slugify }}" value="{{ track.completed }}" max="{{ track.total }}">{{ percent }}%</progress>
+      </div>
+    {% endfor %}
+    <div class="pt-footer">
+      <a class="btn" href="{{ pt.profile_url | escape }}" target="_blank" rel="noopener noreferrer">View PentesterLab profile</a>
+      <p>Checked daily · Last synced <time datetime="{{ pt.updated_at | escape }}">{{ pt.updated_at | date: '%B %-d, %Y' }}</time></p>
+    </div>
+  </section>
+  {% endif %}
 
   <section
     class="projects"
