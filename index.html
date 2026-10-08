@@ -456,7 +456,7 @@ title: Pallavi | Portfolio
   .portfolio .pt-progress { margin-top: 40px; padding: 30px; background: #fff; border: 1px solid #e3e8f0; border-radius: 24px; }
   .portfolio .pt-progress h2 { margin: 0 0 8px; font-size: 26px; line-height: 1.3; }
   .portfolio .pt-description { margin: 0; color: var(--muted); }
-  .portfolio .pt-stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin: 24px 0; }
+  .portfolio .pt-stats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin: 24px 0; }
   .portfolio .pt-stats > div { padding: 18px; border-radius: 14px; background: #f7f8fd; }
   .portfolio .pt-stats strong { display: block; font-size: 28px; color: var(--accent); }
   .portfolio .pt-stats span { font-size: 13px; color: var(--muted); }
@@ -588,18 +588,19 @@ title: Pallavi | Portfolio
     <h2 id="pt-title">My PentesterLab Journey</h2>
     <p class="pt-description">Building foundations in web security and Unix, alongside secure code review practice.</p>
     <div class="pt-stats">
-      <div><strong>{{ pt.exercises }}</strong><span>Exercises completed</span></div>
+      <div><strong>{{ pt.exercises | minus: pt.tracks.Introduction.completed | at_least: 0 }}</strong><span>Exercises completed after Introduction</span></div>
       <div><strong>{{ pt.overall_percent }}%</strong><span>Overall platform progress</span></div>
-      <div><strong>{{ pt.tracks.Introduction.completed }}/{{ pt.tracks.Introduction.total }}</strong><span>Introduction exercises completed</span></div>
     </div>
-    {% assign track_names = 'Unix,Essential' | split: ',' %}
-    {% for name in track_names %}
-      {% assign track = pt.tracks[name] %}
+    {% for entry in pt.tracks %}
+      {% assign name = entry[0] %}
+      {% assign track = entry[1] %}
+      {% if name != 'Introduction' and track.completed > 0 %}
       {% assign percent = track.completed | times: 100.0 | divided_by: track.total | round %}
       <div class="pt-track">
-        <label for="pt-{{ name | slugify }}"><span>{{ name }} badge exercises</span><span>{{ track.completed }}/{{ track.total }} · {{ percent }}%</span></label>
+        <label for="pt-{{ name | slugify }}"><span>{{ name | escape }}{% if track.completed == track.total %} · Completed ✓{% endif %}</span><span>{{ track.completed }}/{{ track.total }} · {{ percent }}%</span></label>
         <progress id="pt-{{ name | slugify }}" value="{{ track.completed }}" max="{{ track.total }}">{{ percent }}%</progress>
       </div>
+      {% endif %}
     {% endfor %}
     <div class="pt-footer">
       <a class="btn" href="{{ pt.profile_url | escape }}" target="_blank" rel="noopener noreferrer">View PentesterLab profile</a>
