@@ -608,7 +608,7 @@ title: Pallavi | Portfolio
       {% for entry in pt[group] %}
         {% assign name = entry[0] %}
         {% assign track = entry[1] %}
-        {% if track.completed > 0 %}
+        {% if track.completed > 0 and name != 'Introduction' %}
         {% assign percent = track.completed | times: 100.0 | divided_by: track.total | floor %}
         <div class="pt-track">
           <label for="pt-{{ group }}-{{ name | slugify }}"><span>{{ name | escape }}{% if track.completed == track.total %} · Completed ✓{% endif %}</span><span>{{ track.completed }}/{{ track.total }} · {{ percent }}%</span></label>
