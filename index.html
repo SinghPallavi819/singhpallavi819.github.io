@@ -603,7 +603,7 @@ title: Pallavi | Portfolio
     {% endfor %}
     <div class="pt-footer">
       <a class="btn" href="{{ pt.profile_url | escape }}" target="_blank" rel="noopener noreferrer">View PentesterLab profile</a>
-      <p>Public profile checked daily · Last synced <time datetime="{{ pt.updated_at | escape }}">{{ pt.updated_at | date: '%B %-d, %Y' }}</time></p>
+      <p>Public profile checked every 6 hours · Last synced <time datetime="{{ pt.updated_at | escape }}">{{ pt.updated_at | date: '%B %-d, %Y' }}</time></p>
     </div>
   </section>
   {% endif %}
