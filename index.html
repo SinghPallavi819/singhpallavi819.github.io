@@ -590,20 +590,37 @@ title: Pallavi | Portfolio
       <div><strong>{{ pt.exercises }}</strong><span>Exercises completed</span></div>
       <div><strong>{{ pt.overall_percent }}%</strong><span>Overall platform progress</span></div>
     </div>
-    {% for entry in pt.tracks %}
+    <h3>Learning Tracks</h3>
+    {% for entry in pt.track_snapshots %}
       {% assign name = entry[0] %}
       {% assign track = entry[1] %}
-      {% if name != 'Introduction' and track.completed > 0 %}
-      {% assign percent = track.completed | times: 100.0 | divided_by: track.total | round %}
+      {% unless pt.learning_tracks[name] %}
       <div class="pt-track">
-        <label for="pt-{{ name | slugify }}"><span>{{ name | escape }}{% if track.completed == track.total %} · Completed ✓{% endif %}</span><span>{{ track.completed }}/{{ track.total }} · {{ percent }}%</span></label>
-        <progress id="pt-{{ name | slugify }}" value="{{ track.completed }}" max="{{ track.total }}">{{ percent }}%</progress>
+        <label for="pt-snapshot-{{ name | slugify }}"><span>{{ name | escape }}</span><span>{{ track.completed }}/{{ track.total }} · {{ track.percent }}%</span></label>
+        <progress id="pt-snapshot-{{ name | slugify }}" value="{{ track.completed }}" max="{{ track.total }}">{{ track.percent }}%</progress>
+        <p>{{ track.source | escape }}</p>
       </div>
-      {% endif %}
+      {% endunless %}
     {% endfor %}
+    {% assign groups = 'learning_tracks,badges' | split: ',' %}
+    {% for group in groups %}
+      {% if group == 'badges' %}<h3>Badges</h3>{% endif %}
+      {% for entry in pt[group] %}
+        {% assign name = entry[0] %}
+        {% assign track = entry[1] %}
+        {% if track.completed > 0 %}
+        {% assign percent = track.completed | times: 100.0 | divided_by: track.total | floor %}
+        <div class="pt-track">
+          <label for="pt-{{ group }}-{{ name | slugify }}"><span>{{ name | escape }}{% if track.completed == track.total %} · Completed ✓{% endif %}</span><span>{{ track.completed }}/{{ track.total }} · {{ percent }}%</span></label>
+          <progress id="pt-{{ group }}-{{ name | slugify }}" value="{{ track.completed }}" max="{{ track.total }}">{{ percent }}%</progress>
+        </div>
+        {% endif %}
+      {% endfor %}
+    {% endfor %}
+    <p>Learning tracks refresh automatically when published on the public profile. Tracks and badges with zero completed exercises are hidden.</p>
     <div class="pt-footer">
       <a class="btn" href="{{ pt.profile_url | escape }}" target="_blank" rel="noopener noreferrer">View PentesterLab profile</a>
-      <p>Checked daily · Last synced <time datetime="{{ pt.updated_at | escape }}">{{ pt.updated_at | date: '%B %-d, %Y' }}</time></p>
+      <p>Public profile checked daily · Last synced <time datetime="{{ pt.updated_at | escape }}">{{ pt.updated_at | date: '%B %-d, %Y' }}</time></p>
     </div>
   </section>
   {% endif %}
