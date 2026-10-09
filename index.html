@@ -590,9 +590,8 @@ title: Pallavi | Portfolio
       <div><strong>{{ pt.exercises }}</strong><span>Exercises completed</span></div>
       <div><strong>{{ pt.overall_percent }}%</strong><span>Overall platform progress</span></div>
     </div>
-    {% for entry in pt.badges %}
-      {% assign name = entry[0] %}
-      {% assign track = entry[1] %}
+    {% for name in pt.badge_order %}
+      {% assign track = pt.badges[name] %}
       {% if name != 'Introduction' and track.completed > 0 %}
       {% assign percent = track.completed | times: 100.0 | divided_by: track.total | round %}
       <div class="pt-track">
