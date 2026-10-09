@@ -2,7 +2,7 @@
 
 The homepage renders `_data/pentesterlab.json`, refreshed from the public profile at https://pentesterlab.com/profile/FNU_Pallavi1902.
 
-After merging, the Refresh PentesterLab progress workflow runs daily at 14:17 UTC and can also be run from the Actions tab. It commits the data to main and explicitly requests a GitHub Pages rebuild. This workflow expects the existing Pages source to be Deploy from a branch (main). If Pages is switched to GitHub Actions, its deployment workflow must also run after this refresh.
+After merging, the Refresh PentesterLab progress workflow runs every six hours at 00:17, 06:17, 12:17 and 18:17 UTC and can also be run from the Actions tab. It commits the data to main and explicitly requests a GitHub Pages rebuild. This workflow expects the existing Pages source to be Deploy from a branch (main). If Pages is switched to GitHub Actions, its deployment workflow must also run after this refresh.
 
 The workflow needs Actions enabled and permission to write to main. Branch protection may require a different publishing approach. No PentesterLab password is needed. GitHub can disable scheduled workflows in inactive public repositories; re-enable this workflow in Actions if that happens.
 
